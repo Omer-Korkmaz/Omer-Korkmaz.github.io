@@ -1,1 +1,0 @@
-# Omer-Korkmaz.github.io
