@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.69.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Dilara &amp; Omer Korkmaz">
+<meta name="keywords" content="tech, Data Science, Analytics">
+<meta name="description" content="library(tidyverse)## -- Attaching packages ------------------------------------------------------ tidyverse 1.3.0 --## &lt;U&#43;221A&gt; ggplot2 3.3.0 &lt;U&#43;221A&gt; purrr 0.3.3## &lt;U&#43;221A&gt; tibble 3.0.0 &lt;U&#43;221A&gt; dplyr 0.8.5## &lt;U&#43;221A&gt; tidyr 1.0.2 &lt;U&#43;221A&gt; stringr 1.4.0## &lt;U&#43;221A&gt; readr 1.3.1 &lt;U&#43;221A&gt; forcats 0.5.0## -- Conflicts --------------------------------------------------------- tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()iris %&gt;%select(everything(), -starts_with(&quot;X&quot;)) %&gt;%top_n(10)## Selecting by Species## Sepal.Length Sepal.Width Petal.Length Petal.Width Species## 1 6.">
+
+
+<meta property="og:description" content="library(tidyverse)## -- Attaching packages ------------------------------------------------------ tidyverse 1.3.0 --## &lt;U&#43;221A&gt; ggplot2 3.3.0 &lt;U&#43;221A&gt; purrr 0.3.3## &lt;U&#43;221A&gt; tibble 3.0.0 &lt;U&#43;221A&gt; dplyr 0.8.5## &lt;U&#43;221A&gt; tidyr 1.0.2 &lt;U&#43;221A&gt; stringr 1.4.0## &lt;U&#43;221A&gt; readr 1.3.1 &lt;U&#43;221A&gt; forcats 0.5.0## -- Conflicts --------------------------------------------------------- tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()iris %&gt;%select(everything(), -starts_with(&quot;X&quot;)) %&gt;%top_n(10)## Selecting by Species## Sepal.Length Sepal.Width Petal.Length Petal.Width Species## 1 6.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deneme">
+<meta name="twitter:title" content="Deneme">
+<meta property="og:url" content="/2020/04/deneme/">
+<meta property="twitter:url" content="/2020/04/deneme/">
+<meta property="og:site_name" content="A Blog About Audit, Data Analytics and Some Other Stuff">
+<meta property="og:description" content="library(tidyverse)## -- Attaching packages ------------------------------------------------------ tidyverse 1.3.0 --## &lt;U&#43;221A&gt; ggplot2 3.3.0 &lt;U&#43;221A&gt; purrr 0.3.3## &lt;U&#43;221A&gt; tibble 3.0.0 &lt;U&#43;221A&gt; dplyr 0.8.5## &lt;U&#43;221A&gt; tidyr 1.0.2 &lt;U&#43;221A&gt; stringr 1.4.0## &lt;U&#43;221A&gt; readr 1.3.1 &lt;U&#43;221A&gt; forcats 0.5.0## -- Conflicts --------------------------------------------------------- tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()iris %&gt;%select(everything(), -starts_with(&quot;X&quot;)) %&gt;%top_n(10)## Selecting by Species## Sepal.Length Sepal.Width Petal.Length Petal.Width Species## 1 6.">
+<meta name="twitter:description" content="library(tidyverse)## -- Attaching packages ------------------------------------------------------ tidyverse 1.3.0 --## &lt;U&#43;221A&gt; ggplot2 3.3.0 &lt;U&#43;221A&gt; purrr 0.3.3## &lt;U&#43;221A&gt; tibble 3.0.0 &lt;U&#43;221A&gt; dplyr 0.8.5## &lt;U&#43;221A&gt; tidyr 1.0.2 &lt;U&#43;221A&gt; stringr 1.4.0## &lt;U&#43;221A&gt; readr 1.3.1 &lt;U&#43;221A&gt; forcats 0.5.0## -- Conflicts --------------------------------------------------------- tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()iris %&gt;%select(everything(), -starts_with(&quot;X&quot;)) %&gt;%top_n(10)## Selecting by Species## Sepal.Length Sepal.Width Petal.Length Petal.Width Species## 1 6.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-04-12T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-04-12T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="R">
+    
+  
+  
+    
+      <meta property="article:tag" content="test">
+    
+      <meta property="article:tag" content="deneme">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png">
+  <meta property="twitter:image" content="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png">
+
+
+    <title>Deneme</title>
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="/2020/04/deneme/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">A Blog About Audit, Data Analytics and Some Other Stuff</a>
+  </div>
+  
+    
+      <a class="header-right-icon open-algolia-search"
+         href="/#search">
+    
+    
+      <i class="fa fa-lg fa-search"></i>
+    
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Dilara &amp; Omer Korkmaz</h4>
+        
+          <h5 class="sidebar-profile-bio">We both are working in audit and love data science. This is a modest attemp to motivate ourselves and share some of the cool stuff :)</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="/#search">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">Search</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/dilara-korkmaz/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">DK LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/okorkmaz/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">OK LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Omer-Korkmaz">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Deneme
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-12T00:00:00Z">
+        
+  April 12, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/r">R</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------------ tidyverse 1.3.0 --</code></pre>
+<pre><code>## &lt;U+221A&gt; ggplot2 3.3.0     &lt;U+221A&gt; purrr   0.3.3
+## &lt;U+221A&gt; tibble  3.0.0     &lt;U+221A&gt; dplyr   0.8.5
+## &lt;U+221A&gt; tidyr   1.0.2     &lt;U+221A&gt; stringr 1.4.0
+## &lt;U+221A&gt; readr   1.3.1     &lt;U+221A&gt; forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts --------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>iris %&gt;%
+  select(everything(), -starts_with(&quot;X&quot;)) %&gt;%
+  top_n(10)</code></pre>
+<pre><code>## Selecting by Species</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 1           6.3         3.3          6.0         2.5 virginica
+## 2           5.8         2.7          5.1         1.9 virginica
+## 3           7.1         3.0          5.9         2.1 virginica
+## 4           6.3         2.9          5.6         1.8 virginica
+## 5           6.5         3.0          5.8         2.2 virginica
+## 6           7.6         3.0          6.6         2.1 virginica
+## 7           4.9         2.5          4.5         1.7 virginica
+## 8           7.3         2.9          6.3         1.8 virginica
+## 9           6.7         2.5          5.8         1.8 virginica
+## 10          7.2         3.6          6.1         2.5 virginica
+## 11          6.5         3.2          5.1         2.0 virginica
+## 12          6.4         2.7          5.3         1.9 virginica
+## 13          6.8         3.0          5.5         2.1 virginica
+## 14          5.7         2.5          5.0         2.0 virginica
+## 15          5.8         2.8          5.1         2.4 virginica
+## 16          6.4         3.2          5.3         2.3 virginica
+## 17          6.5         3.0          5.5         1.8 virginica
+## 18          7.7         3.8          6.7         2.2 virginica
+## 19          7.7         2.6          6.9         2.3 virginica
+## 20          6.0         2.2          5.0         1.5 virginica
+## 21          6.9         3.2          5.7         2.3 virginica
+## 22          5.6         2.8          4.9         2.0 virginica
+## 23          7.7         2.8          6.7         2.0 virginica
+## 24          6.3         2.7          4.9         1.8 virginica
+## 25          6.7         3.3          5.7         2.1 virginica
+## 26          7.2         3.2          6.0         1.8 virginica
+## 27          6.2         2.8          4.8         1.8 virginica
+## 28          6.1         3.0          4.9         1.8 virginica
+## 29          6.4         2.8          5.6         2.1 virginica
+## 30          7.2         3.0          5.8         1.6 virginica
+## 31          7.4         2.8          6.1         1.9 virginica
+## 32          7.9         3.8          6.4         2.0 virginica
+## 33          6.4         2.8          5.6         2.2 virginica
+## 34          6.3         2.8          5.1         1.5 virginica
+## 35          6.1         2.6          5.6         1.4 virginica
+## 36          7.7         3.0          6.1         2.3 virginica
+## 37          6.3         3.4          5.6         2.4 virginica
+## 38          6.4         3.1          5.5         1.8 virginica
+## 39          6.0         3.0          4.8         1.8 virginica
+## 40          6.9         3.1          5.4         2.1 virginica
+## 41          6.7         3.1          5.6         2.4 virginica
+## 42          6.9         3.1          5.1         2.3 virginica
+## 43          5.8         2.7          5.1         1.9 virginica
+## 44          6.8         3.2          5.9         2.3 virginica
+## 45          6.7         3.3          5.7         2.5 virginica
+## 46          6.7         3.0          5.2         2.3 virginica
+## 47          6.3         2.5          5.0         1.9 virginica
+## 48          6.5         3.0          5.2         2.0 virginica
+## 49          6.2         3.4          5.4         2.3 virginica
+## 50          5.9         3.0          5.1         1.8 virginica</code></pre>
+<p>Burada deneme amacli bir yazi mevcut.
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see
+Burada deneme amacli bir yazi mevcut.</p>
+<p>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see</p>
+<p>Burada deneme amacli bir yazi mevcut.
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see
+R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/test/">test</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/deneme/">deneme</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/hello-r-markdown/" data-tooltip="Hello R Markdown">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%25!%28EXTRA%20string=/2020/04/deneme/%29">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2020/04/deneme/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2020/04/deneme/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Dilara &amp; Omer Korkmaz. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/hello-r-markdown/" data-tooltip="Hello R Markdown">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%25!%28EXTRA%20string=/2020/04/deneme/%29">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2020/04/deneme/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2020/04/deneme/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%25!%28EXTRA%20string=%2F2020%2F04%2Fdeneme%2F%29">
+          <i class="fa fa-linkedin"></i><span>Share on LinkedIn</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2020%2F04%2Fdeneme%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2020%2F04%2Fdeneme%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Dilara &amp; Omer Korkmaz</h4>
+    
+      <div id="about-card-bio">We both are working in audit and love data science. This is a modest attemp to motivate ourselves and share some of the cool stuff :)</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Audit
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Istanbul
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2020\/04\/deneme\/';
+          
+            this.page.identifier = '\/2020\/04\/deneme\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'Audit and Data';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
