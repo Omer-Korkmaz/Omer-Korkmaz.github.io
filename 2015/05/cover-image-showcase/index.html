@@ -345,13 +345,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae v
             </a>
           </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2015/05/cover-image-showcase/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
       
       <li class="post-action">
         
@@ -365,6 +365,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae v
 </div>
 
             
+              
+                <div id="disqus_thread"></div>
+<script>
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = '//auditanddata.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
               
             
           </div>
@@ -421,13 +433,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae v
             </a>
           </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2015/05/cover-image-showcase/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
       
       <li class="post-action">
         
@@ -457,39 +469,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae v
         </a>
       </li>
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2015%2F05%2Fcover-image-showcase%2F">
-          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
     </div>
-    <div id="graphcomment"></div>
-<script type="text/javascript">
-
-   
-
-  
-  window.gc_params = {
-    graphcomment_id: 'auditanddata',
-
-    
-    fixed_header_height: 0,
-  };
-
-   
-
-  
-  (function() {
-    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
-    gc.src = 'https://graphcomment.com/js/integration.js?' + Math.round(Math.random() * 1e8);
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
-  })();
-
-</script>
     
     <div id="about">
   <div id="about-card">
@@ -570,6 +553,28 @@ $(document).ready(function() {
 
 
   
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2015\/05\/cover-image-showcase\/';
+          
+            this.page.identifier = '\/2015\/05\/cover-image-showcase\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'auditanddata';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
     
   
 
