@@ -83,7 +83,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://auditanddata.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    <link rel="stylesheet" href="https://auditanddata.com/css/style-td0yjfxcnlrcjcafqezxoxslfunqeqqltqunutca6zzpnkykqt6nsgsefg6x.min.css" />
     
     
 
@@ -103,7 +103,7 @@
   
     
       <a class="header-right-icon open-algolia-search"
-         href="https://auditanddata.com/search">
+         href="https://auditanddata.com/#search">
     
     
       <i class="fa fa-lg fa-search"></i>
@@ -514,8 +514,36 @@ s.setAttribute('data-timestamp', +new Date());
   </div>
 </div>
 
-    
-
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        <p>Write your search words and hit enter</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         Ready
+      </p>
+    </div>
+  </div>
+</div>
     
   
     
@@ -532,7 +560,7 @@ s.setAttribute('data-timestamp', +new Date());
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://auditanddata.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="https://auditanddata.com/js/script-hugindjly9fo6h9vctdnsnklljlinjvyciv99r58sarj3owaer48ygyrtecy.min.js"></script>
 
 
 <script lang="javascript">
@@ -590,6 +618,15 @@ $(document).ready(function() {
   
 
 
+
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment-with-locales.min.js" integrity="sha256-TbOIe++NbC9P3KTtUMJ5wcROlBdnRqrPleLdpPg3xxE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.24.5/algoliasearch.min.js" integrity="sha256-vUvLcn3X0cXhote4PNwW6d+fzjJR0hoD+yGFeVaElew=" crossorigin="anonymous"></script>
+    <script>
+      var algoliaClient = algoliasearch('PEE4NON0LR', 'e68bb21b33ff4d76965ea1fcb3fd2e03');
+      var algoliaIndex = algoliaClient.initIndex('auditanddata   ');
+    </script>
+  
 
 
     
