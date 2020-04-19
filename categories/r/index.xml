@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Audit, Data Analytics and Other Stuff</title>
-    <link>/categories/r/</link>
+    <link>https://auditanddata.com/categories/r/</link>
     <description>Recent content in R on Audit, Data Analytics and Other Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://auditanddata.com/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Deneme</title>
-      <link>/2020/04/deneme/</link>
+      <link>https://auditanddata.com/2020/04/deneme/</link>
       <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/04/deneme/</guid>
+      <guid>https://auditanddata.com/2020/04/deneme/</guid>
       <description>library(tidyverse)## -- Attaching packages ------------------------------------------------------- tidyverse 1.3.0 --## &amp;lt;U+221A&amp;gt; ggplot2 3.3.0 &amp;lt;U+221A&amp;gt; purrr 0.3.3## &amp;lt;U+221A&amp;gt; tibble 3.0.0 &amp;lt;U+221A&amp;gt; dplyr 0.8.5## &amp;lt;U+221A&amp;gt; tidyr 1.0.2 &amp;lt;U+221A&amp;gt; stringr 1.4.0## &amp;lt;U+221A&amp;gt; readr 1.3.1 &amp;lt;U+221A&amp;gt; forcats 0.5.0## -- Conflicts ---------------------------------------------------------- tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()iris %&amp;gt;%select(everything(), -starts_with(&amp;quot;X&amp;quot;)) %&amp;gt;%top_n(10)## Selecting by Species## Sepal.Length Sepal.Width Petal.Length Petal.Width Species## 1 6.</description>
     </item>
     
     <item>
       <title>Hello R Markdown</title>
-      <link>/2015/07/hello-r-markdown/</link>
+      <link>https://auditanddata.com/2015/07/hello-r-markdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/2015/07/hello-r-markdown/</guid>
+      <guid>https://auditanddata.com/2015/07/hello-r-markdown/</guid>
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
