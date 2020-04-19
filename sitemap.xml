@@ -266,4 +266,9 @@
     <loc>https://auditanddata.com/archives/</loc>
   </url>
   
+  <url>
+    <loc>https://auditanddata.com/search/</loc>
+    <priority>0.1</priority>
+  </url>
+  
 </urlset>
