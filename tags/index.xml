@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Audit, Data Analytics and Other Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://auditanddata.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>deneme</title>
       <link>https://auditanddata.com/tags/deneme/</link>
-      <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://auditanddata.com/tags/deneme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>disqus</title>
+      <link>https://auditanddata.com/tags/disqus/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://auditanddata.com/tags/disqus/</guid>
       <description></description>
     </item>
     
@@ -53,15 +62,6 @@
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
       <guid>https://auditanddata.com/tags/regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>disqus</title>
-      <link>https://auditanddata.com/tags/disqus/</link>
-      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/tags/disqus/</guid>
       <description></description>
     </item>
     
