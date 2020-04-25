@@ -1,0 +1,53 @@
+---
+title: Covid19 Analysis Tryout
+author: Omer Korkmaz
+date: '2020-04-25'
+slug: covid19-analysis-tryout
+categories:
+  - r
+tags:
+  - markdown
+  - r markdown
+  - r
+  - r studio
+  - ggplot2
+  - tidyverse
+  - datascience
+keywords:
+  - r
+  - r studio
+  - tidyverse
+  - covid
+coverImage: https://www.nps.gov/aboutus/news/images/CDC-coronavirus-image-23311-for-web.jpg?maxwidth=650&autorotate=false
+thumbnailImage: https://www.nps.gov/aboutus/news/images/CDC-coronavirus-image-23311-for-web.jpg?maxwidth=650&autorotate=false
+thumbnailImagePosition: left
+---
+
+A simple visualization of Covid19 cases with R, using package tidyverse for the most part.
+<!--more-->
+
+A simple visualization of Covid19 cases with R, using package tidyverse for the most part.
+
+Tidyverse is a set of R packages for data science. It includes packages to use in everyday data analyses, such as readr, dplyr, tidyr, ggplot, tibble, stringr, purr and many others with more specialised usage.
+
+Loading tidyverse:
+
+```{r}
+library("tidyverse")
+```
+
+Downloading data from JHU repo and loading into R:
+
+```{r}
+time_series_raw_confirmed <- read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv")
+
+time_raw_covid19_deaths <- read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
+
+time_series_raw_recovered_global <-  read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv")
+```
+
+Checking out the dimensions:
+
+```{r}
+dim(time_series_raw_confirmed)
+```

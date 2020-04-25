@@ -2,246 +2,291 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Audit, Data Analytics and Other Stuff</title>
-    <link>https://auditanddata.com/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Audit, Data Analytics and Other Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://auditanddata.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>deneme</title>
-      <link>https://auditanddata.com/tags/deneme/</link>
-      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      <title>datascience</title>
+      <link>/tags/datascience/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/deneme/</guid>
+      <guid>/tags/datascience/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>disqus</title>
-      <link>https://auditanddata.com/tags/disqus/</link>
-      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      <title>ggplot2</title>
+      <link>/tags/ggplot2/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/disqus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>test</title>
-      <link>https://auditanddata.com/tags/test/</link>
-      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/tags/test/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>plot</title>
-      <link>https://auditanddata.com/tags/plot/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>https://auditanddata.com/tags/plot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R Markdown</title>
-      <link>https://auditanddata.com/tags/r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>https://auditanddata.com/tags/r-markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>regression</title>
-      <link>https://auditanddata.com/tags/regression/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>https://auditanddata.com/tags/regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>google analytics</title>
-      <link>https://auditanddata.com/tags/google-analytics/</link>
-      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/tags/google-analytics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gravatar</title>
-      <link>https://auditanddata.com/tags/gravatar/</link>
-      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/tags/gravatar/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hexo theme</title>
-      <link>https://auditanddata.com/tags/hexo-theme/</link>
-      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/tags/hexo-theme/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>responsive</title>
-      <link>https://auditanddata.com/tags/responsive/</link>
-      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/tags/responsive/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html elements</title>
-      <link>https://auditanddata.com/tags/html-elements/</link>
-      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/tags/html-elements/</guid>
+      <guid>/tags/ggplot2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>markdown</title>
-      <link>https://auditanddata.com/tags/markdown/</link>
+      <link>/tags/markdown/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>r</title>
+      <link>/tags/r/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Markdown</title>
+      <link>/tags/r-markdown/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r-markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>r studio</title>
+      <link>/tags/r-studio/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r-studio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tidyverse</title>
+      <link>/tags/tidyverse/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tidyverse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deneme</title>
+      <link>/tags/deneme/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/deneme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>disqus</title>
+      <link>/tags/disqus/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/disqus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>/tags/test/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plot</title>
+      <link>/tags/plot/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/tags/plot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>regression</title>
+      <link>/tags/regression/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/tags/regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>google analytics</title>
+      <link>/tags/google-analytics/</link>
+      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/google-analytics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gravatar</title>
+      <link>/tags/gravatar/</link>
+      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/gravatar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo theme</title>
+      <link>/tags/hexo-theme/</link>
+      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/hexo-theme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>responsive</title>
+      <link>/tags/responsive/</link>
+      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/responsive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>html elements</title>
+      <link>/tags/html-elements/</link>
       <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/markdown/</guid>
+      <guid>/tags/html-elements/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cover image</title>
-      <link>https://auditanddata.com/tags/cover-image/</link>
+      <link>/tags/cover-image/</link>
       <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/cover-image/</guid>
+      <guid>/tags/cover-image/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github theme</title>
-      <link>https://auditanddata.com/tags/github-theme/</link>
+      <link>/tags/github-theme/</link>
       <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/github-theme/</guid>
+      <guid>/tags/github-theme/</guid>
       <description></description>
     </item>
     
     <item>
       <title>highlight code</title>
-      <link>https://auditanddata.com/tags/highlight-code/</link>
+      <link>/tags/highlight-code/</link>
       <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/highlight-code/</guid>
+      <guid>/tags/highlight-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tag plugins</title>
-      <link>https://auditanddata.com/tags/tag-plugins/</link>
+      <link>/tags/tag-plugins/</link>
       <pubDate>Wed, 29 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/tag-plugins/</guid>
+      <guid>/tags/tag-plugins/</guid>
       <description></description>
     </item>
     
     <item>
       <title>social</title>
-      <link>https://auditanddata.com/tags/social/</link>
+      <link>/tags/social/</link>
       <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/social/</guid>
+      <guid>/tags/social/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tags</title>
-      <link>https://auditanddata.com/tags/tags/</link>
+      <link>/tags/tags/</link>
       <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/tags/</guid>
+      <guid>/tags/tags/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pagination</title>
-      <link>https://auditanddata.com/tags/pagination/</link>
+      <link>/tags/pagination/</link>
       <pubDate>Fri, 15 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/pagination/</guid>
+      <guid>/tags/pagination/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dailymotion</title>
-      <link>https://auditanddata.com/tags/dailymotion/</link>
+      <link>/tags/dailymotion/</link>
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/dailymotion/</guid>
+      <guid>/tags/dailymotion/</guid>
       <description></description>
     </item>
     
     <item>
       <title>videos integration</title>
-      <link>https://auditanddata.com/tags/videos-integration/</link>
+      <link>/tags/videos-integration/</link>
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/videos-integration/</guid>
+      <guid>/tags/videos-integration/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vimeo</title>
-      <link>https://auditanddata.com/tags/vimeo/</link>
+      <link>/tags/vimeo/</link>
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/vimeo/</guid>
+      <guid>/tags/vimeo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>youtube</title>
-      <link>https://auditanddata.com/tags/youtube/</link>
+      <link>/tags/youtube/</link>
       <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/youtube/</guid>
+      <guid>/tags/youtube/</guid>
       <description></description>
     </item>
     
     <item>
       <title>chinese</title>
-      <link>https://auditanddata.com/tags/chinese/</link>
+      <link>/tags/chinese/</link>
       <pubDate>Wed, 02 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/chinese/</guid>
+      <guid>/tags/chinese/</guid>
       <description></description>
     </item>
     
     <item>
       <title>image gallery</title>
-      <link>https://auditanddata.com/tags/image-gallery/</link>
+      <link>/tags/image-gallery/</link>
       <pubDate>Mon, 18 Feb 2013 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/image-gallery/</guid>
+      <guid>/tags/image-gallery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>japanese</title>
-      <link>https://auditanddata.com/tags/japanese/</link>
+      <link>/tags/japanese/</link>
       <pubDate>Wed, 02 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>https://auditanddata.com/tags/japanese/</guid>
+      <guid>/tags/japanese/</guid>
       <description></description>
     </item>
     
