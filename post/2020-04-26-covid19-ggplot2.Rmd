@@ -38,6 +38,9 @@ Loading tidyverse and kable:
 
 ```{r}
 library("tidyverse")
+```
+
+```{r}
 library("kableExtra")
 ```
 
