@@ -62,4 +62,3 @@ Checking out the first few rows:
  time_series_raw_confirmed[1:10, 1:10] %>%
   kable('latex')
 ```
-
