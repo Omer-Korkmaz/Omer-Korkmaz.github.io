@@ -92,7 +92,9 @@ as_tibble(time_series_tidy_confirmed) %>%
 This is a draft post and will be updated.
 
 ^[1]: If you want to learn more about the theory behind the ggplot2 and layered grammar of graphics, I’d recommend reading “The Layered Grammar of Graphics”, http://vita.had.co.nz/papers/layered-grammar.pdf
+
 ^[2]: https://github.com/CSSEGISandData/COVID-19
+
 ^[3]: tidyverse
 
 [4]: Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf
