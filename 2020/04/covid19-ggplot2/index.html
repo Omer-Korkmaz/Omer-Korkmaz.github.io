@@ -11,14 +11,14 @@
 <meta name="description" content="
 
 
-#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
+R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
 ">
 
 
 <meta property="og:description" content="
 
 
-#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
+R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
 ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Simple Visualizations About Covid19 Cases Using ggplot2">
@@ -29,12 +29,12 @@
 <meta property="og:description" content="
 
 
-#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
+R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
 ">
 <meta name="twitter:description" content="
 
 
-#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
+R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
 ">
 <meta property="og:locale" content="en-us">
 
@@ -307,10 +307,12 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               </p>
-<p>#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics [1].</p>
-<p>Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University [2].</p>
-<p>Data wrangling is done mostly using tidyverse package. Tidyverse is a set of R packages for data science. It includes packages to use in everyday data analyses, such as readr, dplyr, tidyr, ggplot2, tibble, stringr, purr and many others with more specialised usage.</p>
-<p>Loading tidyverse and kable:</p>
+<p>R has various ways to visualize data. In my opinion, ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics [^1].</p>
+<p>Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University [^2].</p>
+<p>Data wrangling is done mostly using tidyverse [^3] package. Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others.</p>
+<div id="loading-data-and-checking-contents" class="section level1">
+<h1>1. Loading Data and Checking Contents</h1>
+<p>Loading tidyverse:</p>
 <pre class="r"><code>library(&quot;tidyverse&quot;)</code></pre>
 <pre><code>## -- Attaching packages ------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## &lt;U+221A&gt; ggplot2 3.3.0     &lt;U+221A&gt; purrr   0.3.3
@@ -320,12 +322,6 @@ if (!doNotTrack) {
 <pre><code>## -- Conflicts ---------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(&quot;kableExtra&quot;)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;kableExtra&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     group_rows</code></pre>
 <p>Downloading data from JHU repo and loading into R:</p>
 <pre class="r"><code>time_series_raw_confirmed &lt;- read.csv(&quot;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv&quot;)
 
@@ -335,8 +331,7 @@ time_series_raw_recovered_global &lt;-  read.csv(&quot;https://raw.githubusercon
 <p>Checking out the dimensions:</p>
 <pre class="r"><code>dim(time_series_raw_confirmed)</code></pre>
 <pre><code>## [1] 264  99</code></pre>
-<p>Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).</p>
-<p>Checking out the most few rows:</p>
+<p>Checking out the first few rows and columns:</p>
 <pre class="r"><code>as_tibble(time_series_raw_confirmed)</code></pre>
 <pre><code>## # A tibble: 264 x 99
 ##    Province.State Country.Region   Lat   Long X1.22.20 X1.23.20 X1.24.20
@@ -374,6 +369,12 @@ time_series_raw_recovered_global &lt;-  read.csv(&quot;https://raw.githubusercon
 ## #   X4.15.20 &lt;int&gt;, X4.16.20 &lt;int&gt;, X4.17.20 &lt;int&gt;, X4.18.20 &lt;int&gt;,
 ## #   X4.19.20 &lt;int&gt;, X4.20.20 &lt;int&gt;, X4.21.20 &lt;int&gt;, X4.22.20 &lt;int&gt;,
 ## #   X4.23.20 &lt;int&gt;, X4.24.20 &lt;int&gt;, X4.25.20 &lt;int&gt;</code></pre>
+<p>Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).</p>
+</div>
+<div id="cleaning-and-consolidating-data" class="section level1">
+<h1>2. Cleaning and Consolidating Data</h1>
+<p>Writing a function to pivot the data into longer format and summarize by country.</p>
+</div>
 
               
             </div>

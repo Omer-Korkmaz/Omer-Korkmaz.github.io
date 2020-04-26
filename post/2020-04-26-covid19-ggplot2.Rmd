@@ -25,23 +25,21 @@ thumbnailImage: https://www.nps.gov/aboutus/news/images/CDC-coronavirus-image-23
 thumbnailImagePosition: left
 ---
 
-#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. 
+R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. 
 <!--more-->
 
-#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics [1]. 
+R has various ways to visualize data. In my opinion, ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics [^1]. 
 
-Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University [2].
+Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University [^2].
 
-Data wrangling is done mostly using tidyverse package. Tidyverse is a set of R packages for data science. It includes packages to use in everyday data analyses, such as readr, dplyr, tidyr, ggplot2, tibble, stringr, purr and many others with more specialised usage.
+Data wrangling is done mostly using tidyverse [^3] package. Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others.
 
-Loading tidyverse and kable:
+# 1. Loading Data and Checking Contents
+
+Loading tidyverse:
 
 ```{r}
 library("tidyverse")
-```
-
-```{r}
-library("kableExtra")
 ```
 
 Downloading data from JHU repo and loading into R:
@@ -60,9 +58,19 @@ Checking out the dimensions:
 dim(time_series_raw_confirmed)
 ```
 
-Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).
 
-Checking out the most few rows:
+Checking out the first few rows and columns:
+
 ```{r}
 as_tibble(time_series_raw_confirmed)
 ```
+
+Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).
+
+# 2. Cleaning and Consolidating Data
+
+Writing a function to pivot the data into longer format and summarize by country.
+
+```{r}
+
+
