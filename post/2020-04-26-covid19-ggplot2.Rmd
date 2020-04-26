@@ -36,20 +36,18 @@ Data wrangling is done mostly using tidyverse [^3] package. Tidyverse is a set o
 
 # 1. Loading Data and Checking Contents
 
-Loading tidyverse:
+Loading tidyverse, magrittr (For pipes) and lubridate (For date ops.):
 
 ```{r}
 library("tidyverse")
+library("magrittr")
+library("lubridate")
 ```
 
-Downloading data from JHU repo and loading into R:
+Downloading confirmed cases data from JHU repo and loading into R:
 
 ```{r}
 time_series_raw_confirmed <- read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv")
-
-time_series_raw_covid19_deaths <- read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
-
-time_series_raw_recovered_global <-  read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv")
 ```
 
 Checking out the dimensions:
@@ -69,8 +67,24 @@ Dataframe has 264 rows (One row for each country/state) and 99 columns (One colu
 
 # 2. Cleaning and Consolidating Data
 
-Writing a function to pivot the data into longer format and summarize by country.
+Writing a function to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
 
 ```{r}
+tidydatafunction <- function(data) {
+  data %<>% select(everything(), -'Province.State', -'Lat', -'Long') %>% rename(country = Country.Region) # Removing unnecessary columns
+  data %<>% pivot_longer(-country, names_to = "date", values_to = "count") # Pivoting data into longer format
+  data %<>% mutate(date = date %>% substr(2,8)%>% mdy()) # Removing the "x"s and converting to dates
+  data %<>% group_by(country, date) %>% summarise(count = sum(count, na.rm = TRUE)) %>% as.data.frame() # Summarise by country
+  return(data)
+}
+```
 
+Cleaning previously loaded data into new tidy dataset:
+```{r}
+time_series_tidy_confirmed <- time_series_raw_confirmed %>% tidydatafunction()
+```
 
+```{r}
+as_tibble(time_series_tidy_confirmed) %>%
+  arrange(desc(count))
+```
