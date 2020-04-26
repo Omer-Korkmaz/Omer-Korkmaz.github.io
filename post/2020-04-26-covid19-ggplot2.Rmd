@@ -34,10 +34,11 @@ Following graphs about Covid19 are built with #ggplot2, using data provided by J
 
 Data wrangling is done mostly using tidyverse package. Tidyverse is a set of R packages for data science. It includes packages to use in everyday data analyses, such as readr, dplyr, tidyr, ggplot2, tibble, stringr, purr and many others with more specialised usage.
 
-Loading tidyverse:
+Loading tidyverse and kable:
 
 ```{r}
 library("tidyverse")
+library("kableExtra")
 ```
 
 Downloading data from JHU repo and loading into R:
@@ -58,6 +59,7 @@ dim(time_series_raw_confirmed)
 
 Checking out the first few rows:
 ```{r}
-head(as_tibble(time_series_raw_confirmed))
+ time_series_raw_confirmed[1:10, 1:10] %>%
+  kable('latex')
 ```
 

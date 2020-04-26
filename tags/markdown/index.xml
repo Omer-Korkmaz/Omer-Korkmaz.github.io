@@ -25,19 +25,6 @@
     </item>
     
     <item>
-      <title>Covid19 Analysis Tryout</title>
-      <link>https://auditanddata.com/2020/04/covid19-analysis-tryout/</link>
-      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://auditanddata.com/2020/04/covid19-analysis-tryout/</guid>
-      <description>
-
-
-&lt;p&gt;A simple visualization of Covid19 cases with R, using package tidyverse for the most part.
-</description>
-    </item>
-    
-    <item>
       <title>Elements showcase</title>
       <link>https://auditanddata.com/2015/05/elements-showcase/</link>
       <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
