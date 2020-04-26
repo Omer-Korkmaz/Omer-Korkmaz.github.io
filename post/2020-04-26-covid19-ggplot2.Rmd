@@ -30,9 +30,9 @@ R has various ways to visualize data. In my opinion, #ggplot2 is the most elegan
 
 R has various ways to visualize data. In my opinion, ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics^[If you want to learn more about the theory behind the ggplot2 and layered grammar of graphics, I’d recommend reading “The Layered Grammar of Graphics”, http://vita.had.co.nz/papers/layered-grammar.pdf]. 
 
-Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University^[2].
+Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University^[https://github.com/CSSEGISandData/COVID-19].
 
-Data wrangling is done mostly using tidyverse^[3] package. Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others.
+Data wrangling is done mostly using tidyverse^[https://www.tidyverse.org/] package. Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others.
 
 # 1. Loading Data and Checking Contents
 
@@ -67,7 +67,8 @@ Dataframe has 264 rows (One row for each country/state) and 99 columns (One colu
 
 # 2. Cleaning and Consolidating Data
 
-Writing a function to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
+Writing a function^[There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code.
+Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf] to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
 
 ```{r}
 tidydatafunction <- function(data) {
@@ -91,10 +92,4 @@ as_tibble(time_series_tidy_confirmed) %>%
 
 This is a draft post and will be updated.
 
-^[1]: If you want to learn more about the theory behind the ggplot2 and layered grammar of graphics, I’d recommend reading “The Layered Grammar of Graphics”, http://vita.had.co.nz/papers/layered-grammar.pdf
-
-^[2]: https://github.com/CSSEGISandData/COVID-19
-
-^[3]: tidyverse
-
-[4]: Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf
+[4]: 
