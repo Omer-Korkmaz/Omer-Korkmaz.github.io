@@ -28,7 +28,7 @@ thumbnailImagePosition: left
 R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. 
 <!--more-->
 
-R has various ways to visualize data. In my opinion, ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics^[1]. 
+R has various ways to visualize data. In my opinion, ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics^[If you want to learn more about the theory behind the ggplot2 and layered grammar of graphics, I’d recommend reading “The Layered Grammar of Graphics”, http://vita.had.co.nz/papers/layered-grammar.pdf]. 
 
 Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University^[2].
 
