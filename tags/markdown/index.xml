@@ -2,21 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>markdown on Audit, Data Analytics and Other Stuff</title>
-    <link>/tags/markdown/</link>
+    <link>https://auditanddata.com/tags/markdown/</link>
     <description>Recent content in markdown on Audit, Data Analytics and Other Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://auditanddata.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Simple Visualizations About Covid19 Cases Using ggplot2</title>
+      <link>https://auditanddata.com/2020/04/covid19-ggplot2/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://auditanddata.com/2020/04/covid19-ggplot2/</guid>
+      <description>
+
+
+&lt;p&gt;#R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
+</description>
+    </item>
+    
+    <item>
       <title>Covid19 Analysis Tryout</title>
-      <link>/2020/04/covid19-analysis-tryout/</link>
+      <link>https://auditanddata.com/2020/04/covid19-analysis-tryout/</link>
       <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/04/covid19-analysis-tryout/</guid>
+      <guid>https://auditanddata.com/2020/04/covid19-analysis-tryout/</guid>
       <description>
 
 
@@ -26,10 +39,10 @@
     
     <item>
       <title>Elements showcase</title>
-      <link>/2015/05/elements-showcase/</link>
+      <link>https://auditanddata.com/2015/05/elements-showcase/</link>
       <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>/2015/05/elements-showcase/</guid>
+      <guid>https://auditanddata.com/2015/05/elements-showcase/</guid>
       <description>&lt;p&gt;Check out how Tranquilpeak theme display well HTML elements (title, paragraph, blockquote, table and more..). It&amp;rsquo;s simple and elegant.&lt;/p&gt;</description>
     </item>
     
