@@ -60,8 +60,9 @@ Checking out the dimensions:
 dim(time_series_raw_confirmed)
 ```
 
-Checking out the first few rows:
+Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).
+
+Checking out the most few rows:
 ```{r}
- time_series_raw_confirmed[1:10, 1:10] %>%
-  kable('latex')
+as_tibble(time_series_raw_confirmed)
 ```
