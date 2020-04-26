@@ -28,11 +28,11 @@ thumbnailImagePosition: left
 R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. 
 <!--more-->
 
-R has various ways to visualize data. In my opinion, ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics [^1]. 
+R has various ways to visualize data. In my opinion, ggplot2 is the most elegant, practical and somewhat easy to learn way to do so. It has a very common-sensical logic for creating graphs. It implements the grammar of graphics[^1]. 
 
-Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University [^2].
+Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University[^2].
 
-Data wrangling is done mostly using tidyverse [^3] package. Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others.
+Data wrangling is done mostly using tidyverse[^3] package. Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others.
 
 # 1. Loading Data and Checking Contents
 
@@ -88,3 +88,10 @@ time_series_tidy_confirmed <- time_series_raw_confirmed %>% tidydatafunction()
 as_tibble(time_series_tidy_confirmed) %>%
   arrange(desc(count))
 ```
+
+# This is a draft post and will be updated.
+
+[^1]: If you want to learn more about the theory behind the ggplot2 and layered grammar of graphics, I’d recommend reading “The Layered Grammar of Graphics”, http://vita.had.co.nz/papers/layered-grammar.pdf
+[^2]: https://github.com/CSSEGISandData/COVID-19
+[^3]: tidyverse
+[^4]: Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf
