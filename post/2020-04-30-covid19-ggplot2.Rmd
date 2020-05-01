@@ -38,7 +38,7 @@ Data wrangling is done mostly using tidyverse^[Tidyverse is a set of R packages 
 
 Loading tidyverse, magrittr (For pipes) and lubridate (For date ops.):
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library("tidyverse")
 library("magrittr")
 library("lubridate")
