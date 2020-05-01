@@ -1,10 +1,11 @@
 ---
 title: Simple Visualizations About Covid19 Cases Using ggplot2
 author: Omer Korkmaz
-date: '2020-04-26'
+date: '2020-05-02'
 categories:
   - r
 tags:
+  - covid19
   - datascience
   - ggplot2
   - markdown
@@ -12,7 +13,6 @@ tags:
   - r markdown
   - r studio
   - tidyverse
-  - covid19
 slug: covid19-ggplot2
 keywords:
   - r
@@ -32,13 +32,13 @@ R has various ways to visualize data. In my opinion, ggplot2 is the most elegant
 
 Following graphs about Covid19 are built with #ggplot2, using data provided by John Hopkins University^[https://github.com/CSSEGISandData/COVID-19].
 
-Data wrangling is done mostly using tidyverse^[https://www.tidyverse.org/] package. Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others.
+Data wrangling is done mostly using tidyverse^[Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others. Url: https://www.tidyverse.org/] package.
 
 # 1. Loading Data and Checking Contents
 
 Loading tidyverse, magrittr (For pipes) and lubridate (For date ops.):
 
-```{r}
+```{r message=FALSE}
 library("tidyverse")
 library("magrittr")
 library("lubridate")
@@ -67,8 +67,7 @@ Dataframe has 264 rows (One row for each country/state) and 99 columns (One colu
 
 # 2. Cleaning and Consolidating Data
 
-Writing a function^[There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code.
-Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf] to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
+Writing a function^[There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code in the paper. Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf] to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
 
 ```{r}
 tidydatafunction <- function(data) {
