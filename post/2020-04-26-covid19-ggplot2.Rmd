@@ -88,7 +88,3 @@ time_series_tidy_confirmed <- time_series_raw_confirmed %>% tidydatafunction()
 as_tibble(time_series_tidy_confirmed) %>%
   arrange(desc(count))
 ```
-
-This is a draft post and will be updated.
-
-[4]: 
