@@ -132,3 +132,13 @@ ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = da
   geom_smooth() + # Added regression line, locally fitted with loess method 
   labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey") # Axis labels and main title added
 ```
+
+Plotting daily case trend for top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:
+```{r message=FALSE, warning=FALSE}
+ggplot(data = time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
+  geom_line() + # Added line
+  geom_point() + # Added points
+  geom_smooth() + # Added regression line, locally fitted with loess method 
+  labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey") + # Axis labels and main title added
+  facet_wrap(~ country, nrow = 3)
+```

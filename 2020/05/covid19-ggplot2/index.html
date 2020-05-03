@@ -457,6 +457,14 @@ top_nine_countries</code></pre>
   geom_smooth() + # Added regression line, locally fitted with loess method 
   labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Turkey&quot;) # Axis labels and main title added</code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Plotting daily case trend for top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:</p>
+<pre class="r"><code>ggplot(data = time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
+  geom_line() + # Added line
+  geom_point() + # Added points
+  geom_smooth() + # Added regression line, locally fitted with loess method 
+  labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Turkey&quot;) + # Axis labels and main title added
+  facet_wrap(~ country, nrow = 3)</code></pre>
+<p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div class="footnotes">
 <hr />
