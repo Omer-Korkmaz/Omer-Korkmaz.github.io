@@ -96,6 +96,7 @@ time_series_tidy_confirmed_with_daily <- time_series_tidy_confirmed %>%
   group_by(country) %>% # Group by country
   arrange(country, date) %>% # Sort asc. by country and then date
   mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases
+time_series_tidy_confirmed_with_daily
 ```
 
 Filtering Turkey, calculating daily cases from accumulated cases and saving as a new data frame:
@@ -104,17 +105,27 @@ turkey_time_series_tidy_confirmed_with_daily <- time_series_tidy_confirmed %>%
   filter(country == "Turkey") %>% # Filtering Turkey
   arrange(date) %>% # Sort asc. by date
   mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases
+turkey_time_series_tidy_confirmed_with_daily
+```
+
+Listing top 9 countries in terms of total cases (Will come in handy later)
+```{r}
+top_nine_countries <- time_series_tidy_confirmed_with_daily %>%
+  filter(date == '2020-05-02') %>%
+  group_by(country) %>%
+  summarise(total_case = sum(accumulated_cases, na.rm = TRUE)) %>%
+  top_n(9, total_case) %>%
+  select(country)
+top_nine_countries
 ```
 
 #3. Plotting Some Graphs
 
-Plotting daily case trend for Turkey
+Plotting daily case trend for Turkey, black line and dots respresent actual case numbers and blue line is regression line:
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
-  geom_line() + ## Added line
+  geom_line() + # Added line
   geom_point() + # Added points
-  geom_smooth() + # Added regression line,locally fitted with loess method 
+  geom_smooth() + # Added regression line, locally fitted with loess method 
   labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey") # Axis labels and main title added
 ```
-
-
