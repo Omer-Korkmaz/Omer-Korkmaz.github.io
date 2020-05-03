@@ -450,20 +450,23 @@ top_nine_countries</code></pre>
 ## 8 Russia        
 ## 9 Brazil</code></pre>
 <p>#3. Plotting Some Graphs</p>
+<p>Let’s see how Turkey is doing, in terms of new cases.</p>
 <p>Plotting daily case trend for Turkey, black line and dots respresent actual case numbers and blue line is regression line:</p>
 <pre class="r"><code>ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
-  geom_smooth() + # Added regression line, locally fitted with loess method 
-  labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Turkey&quot;) # Axis labels and main title added</code></pre>
+  geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
+  labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Turkey&quot;)  # Axis labels and main title added</code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>It seems that Turkey has reached the peak and now is on a downwards trend.</p>
+<p>How about other countries? Let’s see how top 9 countries (In terms of accumulated cases) are doing?</p>
 <p>Plotting daily case trend for top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:</p>
 <pre class="r"><code>ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
-  geom_smooth() + # Added regression line, locally fitted with loess method 
-  labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Turkey&quot;) + # Axis labels and main title added
-  facet_wrap(~ country, nrow = 3, scales = &quot;free&quot;)</code></pre>
+  geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
+  labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Top 9 Countries&quot;) + # Axis labels and main title added
+  facet_wrap(country~., nrow = 3, scales = &quot;free&quot;)</code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div class="footnotes">

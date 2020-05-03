@@ -124,21 +124,28 @@ top_nine_countries
 
 #3. Plotting Some Graphs
 
+Let's see how Turkey is doing, in terms of new cases.
+
 Plotting daily case trend for Turkey, black line and dots respresent actual case numbers and blue line is regression line:
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
-  geom_smooth() + # Added regression line, locally fitted with loess method 
-  labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey") # Axis labels and main title added
+  geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
+  labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey")  # Axis labels and main title added
 ```
+
+It seems that Turkey has reached the peak and now is on a downwards trend.
+
+How about other countries? Let's see how top 9 countries (In terms of accumulated cases) are doing?
 
 Plotting daily case trend for top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
-  geom_smooth() + # Added regression line, locally fitted with loess method 
-  labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey") + # Axis labels and main title added
-  facet_wrap(~ country, nrow = 3, scales = "free")
+  geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
+  labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Top 9 Countries") + # Axis labels and main title added
+  facet_wrap(country~., nrow = 3, scales = "free")
 ```
+
