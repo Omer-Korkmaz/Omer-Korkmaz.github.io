@@ -470,7 +470,8 @@ top_nine_countries</code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>And situation about accumulated cases is as following:</p>
 <p>Plotting accumulated case trend top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:</p>
-<pre class="r"><code>ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = accumulated_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
+<pre class="r"><code>options(scipen = 999999) # Closing scientific display of numbers
+ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = accumulated_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
   geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
