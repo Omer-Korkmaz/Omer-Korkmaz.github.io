@@ -96,7 +96,8 @@ time_series_tidy_confirmed_with_daily <- time_series_tidy_confirmed %>%
   group_by(country) %>% # Group by country
   arrange(country, date) %>% # Sort asc. by country and then date
   mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases
-time_series_tidy_confirmed_with_daily
+time_series_tidy_confirmed_with_daily %>%
+  arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers
 ```
 
 Filtering Turkey, calculating daily cases from accumulated cases and saving as a new data frame:
@@ -105,7 +106,8 @@ turkey_time_series_tidy_confirmed_with_daily <- time_series_tidy_confirmed %>%
   filter(country == "Turkey") %>% # Filtering Turkey
   arrange(date) %>% # Sort asc. by date
   mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases
-turkey_time_series_tidy_confirmed_with_daily
+head(turkey_time_series_tidy_confirmed_with_daily %>%
+  arrange(desc(accumulated_cases))) # Sorting desc. to see top numbers
 ```
 
 Listing top 9 countries in terms of total cases (Will come in handy later)
@@ -115,6 +117,7 @@ top_nine_countries <- time_series_tidy_confirmed_with_daily %>%
   group_by(country) %>%
   summarise(total_case = sum(accumulated_cases, na.rm = TRUE)) %>%
   top_n(9, total_case) %>%
+  arrange(desc(total_case)) %>%
   select(country)
 top_nine_countries
 ```
