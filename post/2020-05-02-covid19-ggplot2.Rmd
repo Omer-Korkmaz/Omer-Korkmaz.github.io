@@ -135,7 +135,7 @@ ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = da
 
 Plotting daily case trend for top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:
 ```{r message=FALSE, warning=FALSE}
-ggplot(data = time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
+ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
   geom_smooth() + # Added regression line, locally fitted with loess method 
