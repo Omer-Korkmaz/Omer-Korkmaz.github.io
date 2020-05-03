@@ -320,10 +320,10 @@ library(&quot;lubridate&quot;)</code></pre>
 <pre class="r"><code>time_series_raw_confirmed &lt;- read.csv(&quot;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv&quot;)</code></pre>
 <p>Checking out the dimensions:</p>
 <pre class="r"><code>dim(time_series_raw_confirmed)</code></pre>
-<pre><code>## [1] 266 104</code></pre>
+<pre><code>## [1] 266 106</code></pre>
 <p>Checking out the first few rows and columns:</p>
 <pre class="r"><code>as_tibble(time_series_raw_confirmed)</code></pre>
-<pre><code>## # A tibble: 266 x 104
+<pre><code>## # A tibble: 266 x 106
 ##    Province.State Country.Region   Lat   Long X1.22.20 X1.23.20 X1.24.20
 ##    &lt;fct&gt;          &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;
 ##  1 &quot;&quot;             Afghanistan     33    65           0        0        0
@@ -336,7 +336,7 @@ library(&quot;lubridate&quot;)</code></pre>
 ##  8 &quot;&quot;             Armenia         40.1  45.0         0        0        0
 ##  9 &quot;Australian C~ Australia      -35.5 149.          0        0        0
 ## 10 &quot;New South Wa~ Australia      -33.9 151.          0        0        0
-## # ... with 256 more rows, and 97 more variables: X1.25.20 &lt;int&gt;,
+## # ... with 256 more rows, and 99 more variables: X1.25.20 &lt;int&gt;,
 ## #   X1.26.20 &lt;int&gt;, X1.27.20 &lt;int&gt;, X1.28.20 &lt;int&gt;, X1.29.20 &lt;int&gt;,
 ## #   X1.30.20 &lt;int&gt;, X1.31.20 &lt;int&gt;, X2.1.20 &lt;int&gt;, X2.2.20 &lt;int&gt;,
 ## #   X2.3.20 &lt;int&gt;, X2.4.20 &lt;int&gt;, X2.5.20 &lt;int&gt;, X2.6.20 &lt;int&gt;, X2.7.20 &lt;int&gt;,
@@ -359,7 +359,8 @@ library(&quot;lubridate&quot;)</code></pre>
 ## #   X4.15.20 &lt;int&gt;, X4.16.20 &lt;int&gt;, X4.17.20 &lt;int&gt;, X4.18.20 &lt;int&gt;,
 ## #   X4.19.20 &lt;int&gt;, X4.20.20 &lt;int&gt;, X4.21.20 &lt;int&gt;, X4.22.20 &lt;int&gt;,
 ## #   X4.23.20 &lt;int&gt;, X4.24.20 &lt;int&gt;, X4.25.20 &lt;int&gt;, X4.26.20 &lt;int&gt;,
-## #   X4.27.20 &lt;int&gt;, X4.28.20 &lt;int&gt;, X4.29.20 &lt;int&gt;, X4.30.20 &lt;int&gt;</code></pre>
+## #   X4.27.20 &lt;int&gt;, X4.28.20 &lt;int&gt;, X4.29.20 &lt;int&gt;, X4.30.20 &lt;int&gt;,
+## #   X5.1.20 &lt;int&gt;, X5.2.20 &lt;int&gt;</code></pre>
 <p>Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).</p>
 </div>
 <div id="cleaning-and-consolidating-data" class="section level1">
@@ -369,27 +370,51 @@ library(&quot;lubridate&quot;)</code></pre>
   data %&lt;&gt;% select(everything(), -&#39;Province.State&#39;, -&#39;Lat&#39;, -&#39;Long&#39;) %&gt;% rename(country = Country.Region) # Removing unnecessary columns
   data %&lt;&gt;% pivot_longer(-country, names_to = &quot;date&quot;, values_to = &quot;count&quot;) # Pivoting data into longer format
   data %&lt;&gt;% mutate(date = date %&gt;% substr(2,8)%&gt;% mdy()) # Removing the &quot;x&quot;s and converting to dates
-  data %&lt;&gt;% group_by(country, date) %&gt;% summarise(count = sum(count, na.rm = TRUE)) %&gt;% as.data.frame() # Summarise by country
+  data %&lt;&gt;% group_by(country, date) %&gt;% summarise(accumulated_cases = sum(count, na.rm = TRUE)) %&gt;% as.data.frame() # Summarise by country
   return(data)
 }</code></pre>
 <p>Cleaning previously loaded data into new tidy dataset:</p>
 <pre class="r"><code>time_series_tidy_confirmed &lt;- time_series_raw_confirmed %&gt;% tidydatafunction()</code></pre>
+<p>Checking out new, tidy dataset:</p>
 <pre class="r"><code>as_tibble(time_series_tidy_confirmed) %&gt;%
-  arrange(desc(count))</code></pre>
-<pre><code>## # A tibble: 18,700 x 3
-##    country date         count
-##    &lt;fct&gt;   &lt;date&gt;       &lt;int&gt;
-##  1 US      2020-04-30 1069424
-##  2 US      2020-04-29 1039909
-##  3 US      2020-04-28 1012582
-##  4 US      2020-04-27  988197
-##  5 US      2020-04-26  965785
-##  6 US      2020-04-25  938154
-##  7 US      2020-04-24  905358
-##  8 US      2020-04-23  869170
-##  9 US      2020-04-22  840351
-## 10 US      2020-04-21  811865
-## # ... with 18,690 more rows</code></pre>
+  arrange(desc(accumulated_cases))</code></pre>
+<pre><code>## # A tibble: 19,074 x 3
+##    country date       accumulated_cases
+##    &lt;fct&gt;   &lt;date&gt;                 &lt;int&gt;
+##  1 US      2020-05-02           1132539
+##  2 US      2020-05-01           1103461
+##  3 US      2020-04-30           1069424
+##  4 US      2020-04-29           1039909
+##  5 US      2020-04-28           1012582
+##  6 US      2020-04-27            988197
+##  7 US      2020-04-26            965785
+##  8 US      2020-04-25            938154
+##  9 US      2020-04-24            905358
+## 10 US      2020-04-23            869170
+## # ... with 19,064 more rows</code></pre>
+<p>Filtering Turkey, calculating daily cases from cumulative cases:</p>
+<pre class="r"><code>time_series_tidy_confirmed %&gt;%
+  filter(country == &quot;Turkey&quot;) %&gt;%
+  group_by(country) %&gt;%
+  arrange(country, date) %&gt;%
+  group_by(country) %&gt;%
+  mutate(daily_cases = c(0,diff(accumulated_cases))) %&gt;%
+  arrange(desc(accumulated_cases))</code></pre>
+<pre><code>## # A tibble: 102 x 4
+## # Groups:   country [1]
+##    country date       accumulated_cases daily_cases
+##    &lt;fct&gt;   &lt;date&gt;                 &lt;int&gt;       &lt;dbl&gt;
+##  1 Turkey  2020-05-02            124375        1983
+##  2 Turkey  2020-05-01            122392        2188
+##  3 Turkey  2020-04-30            120204        2615
+##  4 Turkey  2020-04-29            117589        2936
+##  5 Turkey  2020-04-28            114653        2392
+##  6 Turkey  2020-04-27            112261        2131
+##  7 Turkey  2020-04-26            110130        2357
+##  8 Turkey  2020-04-25            107773        2861
+##  9 Turkey  2020-04-24            104912        3122
+## 10 Turkey  2020-04-23            101790        3116
+## # ... with 92 more rows</code></pre>
 </div>
 <div class="footnotes">
 <hr />
@@ -447,7 +472,7 @@ library(&quot;lubridate&quot;)</code></pre>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://auditanddata.com/2020/05/covid19-ggplot2/" data-tooltip="Simple Visualizations About Covid19 Cases Using ggplot2">
               
                   <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                   <i class="fa fa-angle-right"></i>
@@ -540,7 +565,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://auditanddata.com/2020/05/covid19-ggplot2/" data-tooltip="Simple Visualizations About Covid19 Cases Using ggplot2">
               
                   <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                   <i class="fa fa-angle-right"></i>
