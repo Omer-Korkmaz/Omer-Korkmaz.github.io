@@ -463,7 +463,7 @@ top_nine_countries</code></pre>
   geom_point() + # Added points
   geom_smooth() + # Added regression line, locally fitted with loess method 
   labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Turkey&quot;) + # Axis labels and main title added
-  facet_wrap(~ country, nrow = 3)</code></pre>
+  facet_wrap(~ country, nrow = 3, scales = &quot;free&quot;)</code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div class="footnotes">

@@ -140,5 +140,5 @@ ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector
   geom_point() + # Added points
   geom_smooth() + # Added regression line, locally fitted with loess method 
   labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey") + # Axis labels and main title added
-  facet_wrap(~ country, nrow = 3)
+  facet_wrap(~ country, nrow = 3, scales = "free")
 ```
