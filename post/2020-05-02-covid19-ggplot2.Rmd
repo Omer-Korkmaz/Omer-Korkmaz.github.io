@@ -137,7 +137,7 @@ ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = da
 
 It seems that Turkey has reached the peak and now is on a downwards trend.
 
-How about other countries? Let's see how top 9 countries (In terms of accumulated cases) are doing?
+Let's see how top 9 countries (In terms of accumulated cases) are doing.
 
 Plotting daily case trend for top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:
 ```{r message=FALSE, warning=FALSE}
