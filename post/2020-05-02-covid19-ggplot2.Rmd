@@ -90,11 +90,30 @@ as_tibble(time_series_tidy_confirmed) %>%
   arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers
 ```
 
-Filtering Turkey, calculating daily cases from cumulative casess:
+Adding daily cases as calculated field from accumulated cases and saving as a new data frame:
 ```{r}
-time_series_tidy_confirmed %>%
+time_series_tidy_confirmed_with_daily <- time_series_tidy_confirmed %>%
+  group_by(country) %>% # Group by country
+  arrange(country, date) %>% # Sort asc. by country and then date
+  mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases
+```
+
+Filtering Turkey, calculating daily cases from accumulated cases and saving as a new data frame:
+```{r}
+turkey_time_series_tidy_confirmed_with_daily <- time_series_tidy_confirmed %>%
   filter(country == "Turkey") %>% # Filtering Turkey
   arrange(date) %>% # Sort asc. by date
-  mutate(daily_cases = c(0,diff(accumulated_cases))) %>% # Calculate daily cases
-  arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers
+  mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases
 ```
+
+#3. Plotting Some Graphs
+
+Plotting daily cases trend for Turkey
+```{r}
+ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
+  geom_line() + # Added line
+  geom_point() + # Added points
+  geom_smooth() + # Added regression line,locally fitted with loess method 
+  labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Turkey") # Axis labels and main title added
+```
+
