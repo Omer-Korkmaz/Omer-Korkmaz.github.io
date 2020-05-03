@@ -90,7 +90,7 @@ as_tibble(time_series_tidy_confirmed) %>%
   arrange(desc(accumulated_cases))
 ```
 
-Filtering Turkey, calculating daily cases from cumulative cases:
+Filtering Turkey, calculating daily cases from cumulative casess:
 ```{r}
 time_series_tidy_confirmed %>%
   filter(country == "Turkey") %>%
