@@ -403,9 +403,9 @@ library(&quot;lubridate&quot;)</code></pre>
   arrange(date) %&gt;% # Sort asc. by date
   mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases</code></pre>
 <p>#3. Plotting Some Graphs</p>
-<p>Plotting daily cases trend for Turkey</p>
+<p>Plotting daily case trend for Turkey</p>
 <pre class="r"><code>ggplot(data = turkey_time_series_tidy_confirmed_with_daily, mapping = aes(x = date, y = daily_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
-  geom_line() + # Added line
+  geom_line() + ## Added line
   geom_point() + # Added points
   geom_smooth() + # Added regression line,locally fitted with loess method 
   labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Turkey&quot;) # Axis labels and main title added</code></pre>
