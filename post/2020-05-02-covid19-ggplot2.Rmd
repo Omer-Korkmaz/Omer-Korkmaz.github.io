@@ -71,10 +71,10 @@ Writing a function^[There is a more complete and comprehensive paper written by 
 
 ```{r}
 tidydatafunction <- function(data) {
-  data %<>% select(everything(), -'Province.State', -'Lat', -'Long') %>% rename(country = Country.Region) # Removing unnecessary columns
+  data %<>% select(everything(), -'Province.State', -'Lat', -'Long') %>% rename(country = Country.Region) # Removing unnecessary columns and renaming one
   data %<>% pivot_longer(-country, names_to = "date", values_to = "count") # Pivoting data into longer format
   data %<>% mutate(date = date %>% substr(2,8)%>% mdy()) # Removing the "x"s and converting to dates
-  data %<>% group_by(country, date) %>% summarise(accumulated_cases = sum(count, na.rm = TRUE)) %>% as.data.frame() # Summarise by country
+  data %<>% group_by(country, date) %>% summarise(accumulated_cases = sum(count, na.rm = TRUE)) %>% as.data.frame() # Group by country and summarise on case data
   return(data)
 }
 ```
@@ -87,16 +87,14 @@ time_series_tidy_confirmed <- time_series_raw_confirmed %>% tidydatafunction()
 Checking out new, tidy dataset:
 ```{r}
 as_tibble(time_series_tidy_confirmed) %>%
-  arrange(desc(accumulated_cases))
+  arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers
 ```
 
 Filtering Turkey, calculating daily cases from cumulative casess:
 ```{r}
 time_series_tidy_confirmed %>%
-  filter(country == "Turkey") %>%
-  group_by(country) %>%
-  arrange(country, date) %>%
-  group_by(country) %>%
-  mutate(daily_cases = c(0,diff(accumulated_cases))) %>%
-  arrange(desc(accumulated_cases))
+  filter(country == "Turkey") %>% # Filtering Turkey
+  arrange(date) %>% # Sort asc. by date
+  mutate(daily_cases = c(0,diff(accumulated_cases))) %>% # Calculate daily cases
+  arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers
 ```

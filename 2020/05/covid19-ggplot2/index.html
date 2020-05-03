@@ -367,17 +367,17 @@ library(&quot;lubridate&quot;)</code></pre>
 <h1>2. Cleaning and Consolidating Data</h1>
 <p>Writing a function<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):</p>
 <pre class="r"><code>tidydatafunction &lt;- function(data) {
-  data %&lt;&gt;% select(everything(), -&#39;Province.State&#39;, -&#39;Lat&#39;, -&#39;Long&#39;) %&gt;% rename(country = Country.Region) # Removing unnecessary columns
+  data %&lt;&gt;% select(everything(), -&#39;Province.State&#39;, -&#39;Lat&#39;, -&#39;Long&#39;) %&gt;% rename(country = Country.Region) # Removing unnecessary columns and renaming one
   data %&lt;&gt;% pivot_longer(-country, names_to = &quot;date&quot;, values_to = &quot;count&quot;) # Pivoting data into longer format
   data %&lt;&gt;% mutate(date = date %&gt;% substr(2,8)%&gt;% mdy()) # Removing the &quot;x&quot;s and converting to dates
-  data %&lt;&gt;% group_by(country, date) %&gt;% summarise(accumulated_cases = sum(count, na.rm = TRUE)) %&gt;% as.data.frame() # Summarise by country
+  data %&lt;&gt;% group_by(country, date) %&gt;% summarise(accumulated_cases = sum(count, na.rm = TRUE)) %&gt;% as.data.frame() # Group by country and summarise on case data
   return(data)
 }</code></pre>
 <p>Cleaning previously loaded data into new tidy dataset:</p>
 <pre class="r"><code>time_series_tidy_confirmed &lt;- time_series_raw_confirmed %&gt;% tidydatafunction()</code></pre>
 <p>Checking out new, tidy dataset:</p>
 <pre class="r"><code>as_tibble(time_series_tidy_confirmed) %&gt;%
-  arrange(desc(accumulated_cases))</code></pre>
+  arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers</code></pre>
 <pre><code>## # A tibble: 19,074 x 3
 ##    country date       accumulated_cases
 ##    &lt;fct&gt;   &lt;date&gt;                 &lt;int&gt;
@@ -394,27 +394,113 @@ library(&quot;lubridate&quot;)</code></pre>
 ## # ... with 19,064 more rows</code></pre>
 <p>Filtering Turkey, calculating daily cases from cumulative casess:</p>
 <pre class="r"><code>time_series_tidy_confirmed %&gt;%
-  filter(country == &quot;Turkey&quot;) %&gt;%
-  group_by(country) %&gt;%
-  arrange(country, date) %&gt;%
-  group_by(country) %&gt;%
-  mutate(daily_cases = c(0,diff(accumulated_cases))) %&gt;%
-  arrange(desc(accumulated_cases))</code></pre>
-<pre><code>## # A tibble: 102 x 4
-## # Groups:   country [1]
-##    country date       accumulated_cases daily_cases
-##    &lt;fct&gt;   &lt;date&gt;                 &lt;int&gt;       &lt;dbl&gt;
-##  1 Turkey  2020-05-02            124375        1983
-##  2 Turkey  2020-05-01            122392        2188
-##  3 Turkey  2020-04-30            120204        2615
-##  4 Turkey  2020-04-29            117589        2936
-##  5 Turkey  2020-04-28            114653        2392
-##  6 Turkey  2020-04-27            112261        2131
-##  7 Turkey  2020-04-26            110130        2357
-##  8 Turkey  2020-04-25            107773        2861
-##  9 Turkey  2020-04-24            104912        3122
-## 10 Turkey  2020-04-23            101790        3116
-## # ... with 92 more rows</code></pre>
+  filter(country == &quot;Turkey&quot;) %&gt;% # Filtering Turkey
+  arrange(date) %&gt;% # Sort asc. by date
+  mutate(daily_cases = c(0,diff(accumulated_cases))) %&gt;% # Calculate daily cases
+  arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers</code></pre>
+<pre><code>##     country       date accumulated_cases daily_cases
+## 1    Turkey 2020-05-02            124375        1983
+## 2    Turkey 2020-05-01            122392        2188
+## 3    Turkey 2020-04-30            120204        2615
+## 4    Turkey 2020-04-29            117589        2936
+## 5    Turkey 2020-04-28            114653        2392
+## 6    Turkey 2020-04-27            112261        2131
+## 7    Turkey 2020-04-26            110130        2357
+## 8    Turkey 2020-04-25            107773        2861
+## 9    Turkey 2020-04-24            104912        3122
+## 10   Turkey 2020-04-23            101790        3116
+## 11   Turkey 2020-04-22             98674        3083
+## 12   Turkey 2020-04-21             95591        4611
+## 13   Turkey 2020-04-20             90980        4674
+## 14   Turkey 2020-04-19             86306        3977
+## 15   Turkey 2020-04-18             82329        3783
+## 16   Turkey 2020-04-17             78546        4353
+## 17   Turkey 2020-04-16             74193        4801
+## 18   Turkey 2020-04-15             69392        4281
+## 19   Turkey 2020-04-14             65111        4062
+## 20   Turkey 2020-04-13             61049        4093
+## 21   Turkey 2020-04-12             56956        4789
+## 22   Turkey 2020-04-11             52167        5138
+## 23   Turkey 2020-04-10             47029        4747
+## 24   Turkey 2020-04-09             42282        4056
+## 25   Turkey 2020-04-08             38226        4117
+## 26   Turkey 2020-04-07             34109        3892
+## 27   Turkey 2020-04-06             30217        3148
+## 28   Turkey 2020-04-05             27069        3135
+## 29   Turkey 2020-04-04             23934        3013
+## 30   Turkey 2020-04-03             20921        2786
+## 31   Turkey 2020-04-02             18135        2456
+## 32   Turkey 2020-04-01             15679        2148
+## 33   Turkey 2020-03-31             13531        2704
+## 34   Turkey 2020-03-30             10827        1610
+## 35   Turkey 2020-03-29              9217        1815
+## 36   Turkey 2020-03-28              7402        1704
+## 37   Turkey 2020-03-27              5698        2069
+## 38   Turkey 2020-03-26              3629        1196
+## 39   Turkey 2020-03-25              2433         561
+## 40   Turkey 2020-03-24              1872         343
+## 41   Turkey 2020-03-23              1529         293
+## 42   Turkey 2020-03-22              1236         566
+## 43   Turkey 2020-03-21               670         311
+## 44   Turkey 2020-03-20               359         167
+## 45   Turkey 2020-03-19               192          94
+## 46   Turkey 2020-03-18                98          51
+## 47   Turkey 2020-03-17                47          29
+## 48   Turkey 2020-03-16                18          12
+## 49   Turkey 2020-03-15                 6           1
+## 50   Turkey 2020-03-13                 5           4
+## 51   Turkey 2020-03-14                 5           0
+## 52   Turkey 2020-03-11                 1           1
+## 53   Turkey 2020-03-12                 1           0
+## 54   Turkey 2020-01-22                 0           0
+## 55   Turkey 2020-01-23                 0           0
+## 56   Turkey 2020-01-24                 0           0
+## 57   Turkey 2020-01-25                 0           0
+## 58   Turkey 2020-01-26                 0           0
+## 59   Turkey 2020-01-27                 0           0
+## 60   Turkey 2020-01-28                 0           0
+## 61   Turkey 2020-01-29                 0           0
+## 62   Turkey 2020-01-30                 0           0
+## 63   Turkey 2020-01-31                 0           0
+## 64   Turkey 2020-02-01                 0           0
+## 65   Turkey 2020-02-02                 0           0
+## 66   Turkey 2020-02-03                 0           0
+## 67   Turkey 2020-02-04                 0           0
+## 68   Turkey 2020-02-05                 0           0
+## 69   Turkey 2020-02-06                 0           0
+## 70   Turkey 2020-02-07                 0           0
+## 71   Turkey 2020-02-08                 0           0
+## 72   Turkey 2020-02-09                 0           0
+## 73   Turkey 2020-02-10                 0           0
+## 74   Turkey 2020-02-11                 0           0
+## 75   Turkey 2020-02-12                 0           0
+## 76   Turkey 2020-02-13                 0           0
+## 77   Turkey 2020-02-14                 0           0
+## 78   Turkey 2020-02-15                 0           0
+## 79   Turkey 2020-02-16                 0           0
+## 80   Turkey 2020-02-17                 0           0
+## 81   Turkey 2020-02-18                 0           0
+## 82   Turkey 2020-02-19                 0           0
+## 83   Turkey 2020-02-20                 0           0
+## 84   Turkey 2020-02-21                 0           0
+## 85   Turkey 2020-02-22                 0           0
+## 86   Turkey 2020-02-23                 0           0
+## 87   Turkey 2020-02-24                 0           0
+## 88   Turkey 2020-02-25                 0           0
+## 89   Turkey 2020-02-26                 0           0
+## 90   Turkey 2020-02-27                 0           0
+## 91   Turkey 2020-02-28                 0           0
+## 92   Turkey 2020-02-29                 0           0
+## 93   Turkey 2020-03-01                 0           0
+## 94   Turkey 2020-03-02                 0           0
+## 95   Turkey 2020-03-03                 0           0
+## 96   Turkey 2020-03-04                 0           0
+## 97   Turkey 2020-03-05                 0           0
+## 98   Turkey 2020-03-06                 0           0
+## 99   Turkey 2020-03-07                 0           0
+## 100  Turkey 2020-03-08                 0           0
+## 101  Turkey 2020-03-09                 0           0
+## 102  Turkey 2020-03-10                 0           0</code></pre>
 </div>
 <div class="footnotes">
 <hr />
