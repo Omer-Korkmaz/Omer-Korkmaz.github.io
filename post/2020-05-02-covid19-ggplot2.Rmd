@@ -152,7 +152,7 @@ ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector
 And situation about accumulated cases is as following:
 
 Plotting accumulated case trend top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, fig.height=15}
 ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = accumulated_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
