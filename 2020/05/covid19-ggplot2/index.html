@@ -468,10 +468,14 @@ top_nine_countries</code></pre>
   labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Top 9 Countries&quot;) + # Axis labels and main title added
   facet_wrap(country~., nrow = 3, scales = &quot;free&quot;) </code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<p>Another way to show the same trend:</p>
-<pre class="r"><code>ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = daily_cases)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  facet_grid(country~., scales = &quot;free_y&quot;)</code></pre>
+<p>And situation about accumulated cases is as following:</p>
+<p>Plotting accumulated case trend top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:</p>
+<pre class="r"><code>ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = accumulated_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
+  geom_line() + # Added line
+  geom_point() + # Added points
+  geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
+  labs(y = &quot;Accumulated Cases&quot;, x = &quot;Date&quot;, title = &quot;Accumulated Covid19 Cases in Top 9 Countries&quot;) + # Axis labels and main title added
+  facet_grid(country~., scales = &quot;free_y&quot;) </code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div class="footnotes">
