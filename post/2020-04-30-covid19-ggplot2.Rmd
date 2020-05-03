@@ -84,8 +84,18 @@ Cleaning previously loaded data into new tidy dataset:
 time_series_tidy_confirmed <- time_series_raw_confirmed %>% tidydatafunction()
 ```
 
+Checking out new, tidy dataset:
 ```{r}
 as_tibble(time_series_tidy_confirmed) %>%
   arrange(desc(count))
 ```
 
+Filtering Turkey, calculating daily cases from cumulative cases:
+```{r}
+time_series_tidy_confirmed %>%
+  filter(country == "Turkey") %>%
+  group_by(country) %>%
+  arrange(country, date) %>%
+  group_by(country) %>%
+   mutate(daily_cases = c(0,diff(count)))
+```

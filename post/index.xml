@@ -6,10 +6,23 @@
     <description>Recent content in Posts on Audit, Data Analytics and Other Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://auditanddata.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Simple Visualizations About Covid19 Cases Using ggplot2</title>
+      <link>https://auditanddata.com/2020/05/covid19-ggplot2/</link>
+      <pubDate>Sat, 02 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://auditanddata.com/2020/05/covid19-ggplot2/</guid>
+      <description>
+
+
+&lt;p&gt;R has various ways to visualize data. In my opinion, #ggplot2 is the most elegant, practical and somewhat easy to learn way to do so.
+</description>
+    </item>
     
     <item>
       <title>Simple Visualizations About Covid19 Cases Using ggplot2</title>
