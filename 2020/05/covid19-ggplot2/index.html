@@ -320,10 +320,10 @@ library(&quot;lubridate&quot;)</code></pre>
 <pre class="r"><code>time_series_raw_confirmed &lt;- read.csv(&quot;https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv&quot;)</code></pre>
 <p>Checking out the dimensions:</p>
 <pre class="r"><code>dim(time_series_raw_confirmed)</code></pre>
-<pre><code>## [1] 266 106</code></pre>
+<pre><code>## [1] 266 108</code></pre>
 <p>Checking out the first few rows and columns:</p>
 <pre class="r"><code>as_tibble(time_series_raw_confirmed)</code></pre>
-<pre><code>## # A tibble: 266 x 106
+<pre><code>## # A tibble: 266 x 108
 ##    Province.State Country.Region   Lat   Long X1.22.20 X1.23.20 X1.24.20
 ##    &lt;fct&gt;          &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;
 ##  1 &quot;&quot;             Afghanistan     33    65           0        0        0
@@ -336,7 +336,7 @@ library(&quot;lubridate&quot;)</code></pre>
 ##  8 &quot;&quot;             Armenia         40.1  45.0         0        0        0
 ##  9 &quot;Australian C~ Australia      -35.5 149.          0        0        0
 ## 10 &quot;New South Wa~ Australia      -33.9 151.          0        0        0
-## # ... with 256 more rows, and 99 more variables: X1.25.20 &lt;int&gt;,
+## # ... with 256 more rows, and 101 more variables: X1.25.20 &lt;int&gt;,
 ## #   X1.26.20 &lt;int&gt;, X1.27.20 &lt;int&gt;, X1.28.20 &lt;int&gt;, X1.29.20 &lt;int&gt;,
 ## #   X1.30.20 &lt;int&gt;, X1.31.20 &lt;int&gt;, X2.1.20 &lt;int&gt;, X2.2.20 &lt;int&gt;,
 ## #   X2.3.20 &lt;int&gt;, X2.4.20 &lt;int&gt;, X2.5.20 &lt;int&gt;, X2.6.20 &lt;int&gt;, X2.7.20 &lt;int&gt;,
@@ -360,7 +360,7 @@ library(&quot;lubridate&quot;)</code></pre>
 ## #   X4.19.20 &lt;int&gt;, X4.20.20 &lt;int&gt;, X4.21.20 &lt;int&gt;, X4.22.20 &lt;int&gt;,
 ## #   X4.23.20 &lt;int&gt;, X4.24.20 &lt;int&gt;, X4.25.20 &lt;int&gt;, X4.26.20 &lt;int&gt;,
 ## #   X4.27.20 &lt;int&gt;, X4.28.20 &lt;int&gt;, X4.29.20 &lt;int&gt;, X4.30.20 &lt;int&gt;,
-## #   X5.1.20 &lt;int&gt;, X5.2.20 &lt;int&gt;</code></pre>
+## #   X5.1.20 &lt;int&gt;, X5.2.20 &lt;int&gt;, X5.3.20 &lt;int&gt;, ...</code></pre>
 <p>Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).</p>
 </div>
 <div id="cleaning-and-consolidating-data" class="section level1">
@@ -378,20 +378,20 @@ library(&quot;lubridate&quot;)</code></pre>
 <p>Checking out new, tidy dataset:</p>
 <pre class="r"><code>as_tibble(time_series_tidy_confirmed) %&gt;%
   arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers</code></pre>
-<pre><code>## # A tibble: 19,074 x 3
+<pre><code>## # A tibble: 19,448 x 3
 ##    country date       accumulated_cases
 ##    &lt;fct&gt;   &lt;date&gt;                 &lt;int&gt;
-##  1 US      2020-05-02           1132539
-##  2 US      2020-05-01           1103461
-##  3 US      2020-04-30           1069424
-##  4 US      2020-04-29           1039909
-##  5 US      2020-04-28           1012582
-##  6 US      2020-04-27            988197
-##  7 US      2020-04-26            965785
-##  8 US      2020-04-25            938154
-##  9 US      2020-04-24            905358
-## 10 US      2020-04-23            869170
-## # ... with 19,064 more rows</code></pre>
+##  1 US      2020-05-04           1180375
+##  2 US      2020-05-03           1158040
+##  3 US      2020-05-02           1132539
+##  4 US      2020-05-01           1103461
+##  5 US      2020-04-30           1069424
+##  6 US      2020-04-29           1039909
+##  7 US      2020-04-28           1012582
+##  8 US      2020-04-27            988197
+##  9 US      2020-04-26            965785
+## 10 US      2020-04-25            938154
+## # ... with 19,438 more rows</code></pre>
 <p>Adding daily cases as calculated field from accumulated cases and saving as a new data frame:</p>
 <pre class="r"><code>time_series_tidy_confirmed_with_daily &lt;- time_series_tidy_confirmed %&gt;%
   group_by(country) %&gt;% # Group by country
@@ -399,21 +399,21 @@ library(&quot;lubridate&quot;)</code></pre>
   mutate(daily_cases = c(0,diff(accumulated_cases))) # Calculate daily cases
 time_series_tidy_confirmed_with_daily %&gt;%
   arrange(desc(accumulated_cases)) # Sorting desc. to see top numbers</code></pre>
-<pre><code>## # A tibble: 19,074 x 4
+<pre><code>## # A tibble: 19,448 x 4
 ## # Groups:   country [187]
 ##    country date       accumulated_cases daily_cases
 ##    &lt;fct&gt;   &lt;date&gt;                 &lt;int&gt;       &lt;dbl&gt;
-##  1 US      2020-05-02           1132539       29078
-##  2 US      2020-05-01           1103461       34037
-##  3 US      2020-04-30           1069424       29515
-##  4 US      2020-04-29           1039909       27327
-##  5 US      2020-04-28           1012582       24385
-##  6 US      2020-04-27            988197       22412
-##  7 US      2020-04-26            965785       27631
-##  8 US      2020-04-25            938154       32796
-##  9 US      2020-04-24            905358       36188
-## 10 US      2020-04-23            869170       28819
-## # ... with 19,064 more rows</code></pre>
+##  1 US      2020-05-04           1180375       22335
+##  2 US      2020-05-03           1158040       25501
+##  3 US      2020-05-02           1132539       29078
+##  4 US      2020-05-01           1103461       34037
+##  5 US      2020-04-30           1069424       29515
+##  6 US      2020-04-29           1039909       27327
+##  7 US      2020-04-28           1012582       24385
+##  8 US      2020-04-27            988197       22412
+##  9 US      2020-04-26            965785       27631
+## 10 US      2020-04-25            938154       32796
+## # ... with 19,438 more rows</code></pre>
 <p>Filtering Turkey, calculating daily cases from accumulated cases and saving as a new data frame:</p>
 <pre class="r"><code>turkey_time_series_tidy_confirmed_with_daily &lt;- time_series_tidy_confirmed %&gt;%
   filter(country == &quot;Turkey&quot;) %&gt;% # Filtering Turkey
@@ -422,12 +422,12 @@ time_series_tidy_confirmed_with_daily %&gt;%
 head(turkey_time_series_tidy_confirmed_with_daily %&gt;%
   arrange(desc(accumulated_cases))) # Sorting desc. to see top numbers</code></pre>
 <pre><code>##   country       date accumulated_cases daily_cases
-## 1  Turkey 2020-05-02            124375        1983
-## 2  Turkey 2020-05-01            122392        2188
-## 3  Turkey 2020-04-30            120204        2615
-## 4  Turkey 2020-04-29            117589        2936
-## 5  Turkey 2020-04-28            114653        2392
-## 6  Turkey 2020-04-27            112261        2131</code></pre>
+## 1  Turkey 2020-05-04            127659        1614
+## 2  Turkey 2020-05-03            126045        1670
+## 3  Turkey 2020-05-02            124375        1983
+## 4  Turkey 2020-05-01            122392        2188
+## 5  Turkey 2020-04-30            120204        2615
+## 6  Turkey 2020-04-29            117589        2936</code></pre>
 <p>Listing top 9 countries in terms of total cases (Will come in handy later)</p>
 <pre class="r"><code>top_nine_countries &lt;- time_series_tidy_confirmed_with_daily %&gt;%
   filter(date == &#39;2020-05-02&#39;) %&gt;%
@@ -466,17 +466,17 @@ top_nine_countries</code></pre>
   geom_point() + # Added points
   geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
   labs(y = &quot;Daily Cases&quot;, x = &quot;Date&quot;, title = &quot;Daily Covid19 Cases in Top 9 Countries&quot;) + # Axis labels and main title added
-  facet_wrap(country~., nrow = 3, scales = &quot;free&quot;) </code></pre>
+  facet_wrap(~ country, nrow = 3, scales = &quot;free&quot;) </code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>And situation about accumulated cases is as following:</p>
 <p>Plotting accumulated case trend top 9 countries, black line and dots respresent actual case numbers and blue line is regression line:</p>
-<pre class="r"><code>options(scipen = 999999) # Closing scientific display of numbers
+<pre class="r"><code>options(scipen = 999999) # To see numbers as is, not in scientific format 
 ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector(top_nine_countries)), mapping = aes(x = date, y = accumulated_cases)) + # Passed on data, mapping and variables to plot, wrote explicitly on purpose
   geom_line() + # Added line
   geom_point() + # Added points
   geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
   labs(y = &quot;Accumulated Cases&quot;, x = &quot;Date&quot;, title = &quot;Accumulated Covid19 Cases in Top 9 Countries&quot;) + # Axis labels and main title added
-  facet_grid(country~., scales = &quot;free_y&quot;)</code></pre>
+  facet_grid(~ country, scales = &quot;free_y&quot;)</code></pre>
 <p><img src="https://auditanddata.com/post/2020-05-02-covid19-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div class="footnotes">
