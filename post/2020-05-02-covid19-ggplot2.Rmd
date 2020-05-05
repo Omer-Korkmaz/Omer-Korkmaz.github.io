@@ -67,7 +67,7 @@ Dataframe has 266 rows (One row for each country/state) and 106 columns (One col
 
 # 2. Cleaning Data
 
-Writing a function^[There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code in the paper wh'le wr't'ng the function. Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf] to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
+Writing a function^[There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code in the paper while writing the function. Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf] to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
 
 ```{r}
 tidydatafunction <- function(data) {
