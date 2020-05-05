@@ -1,7 +1,7 @@
 ---
 title: Simple Visualizations About Covid19 Cases Using ggplot2
 author: Omer Korkmaz
-date: '2020-05-02'
+date: '2020-05-05'
 categories:
   - r
 tags:
@@ -63,7 +63,7 @@ Checking out the first few rows and columns:
 as_tibble(time_series_raw_confirmed)
 ```
 
-Dataframe has 264 rows (One row for each country/state) and 99 columns (One column for each day, starting on January 22).
+Dataframe has 266 rows (One row for each country/state) and 106 columns (One column for each day, starting on January 22).
 
 # 2. Cleaning and Consolidating Data
 
@@ -113,7 +113,7 @@ head(turkey_time_series_tidy_confirmed_with_daily %>%
 Listing top 9 countries in terms of total cases (Will come in handy later)
 ```{r}
 top_nine_countries <- time_series_tidy_confirmed_with_daily %>%
-  filter(date == '2020-05-02') %>%
+  filter(date == max(date)) %>%
   group_by(country) %>%
   summarise(total_case = sum(accumulated_cases, na.rm = TRUE)) %>%
   top_n(9, total_case) %>%
@@ -146,7 +146,7 @@ ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector
   geom_point() + # Added points
   geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
   labs(y = "Daily Cases", x = "Date", title = "Daily Covid19 Cases in Top 9 Countries") + # Axis labels and main title added
-  facet_wrap(~ country, nrow = 3, scales = "free") 
+  facet_wrap(country~., nrow = 3, scales = "free") 
 ```
 
 And situation about accumulated cases is as following:
@@ -159,5 +159,5 @@ ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector
   geom_point() + # Added points
   geom_smooth(se = FALSE) + # Added regression line, locally fitted with loess method 
   labs(y = "Accumulated Cases", x = "Date", title = "Accumulated Covid19 Cases in Top 9 Countries") + # Axis labels and main title added
-  facet_grid(~ country, scales = "free_y")
+  facet_grid(country~., scales = "free_y")
 ```
