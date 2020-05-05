@@ -65,9 +65,9 @@ as_tibble(time_series_raw_confirmed)
 
 Dataframe has 266 rows (One row for each country/state) and 106 columns (One column for each day, starting on January 22).
 
-# 2. Cleaning and Consolidating Data
+# 2. Cleaning Data
 
-Writing a function^[There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code in the paper. Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf] to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
+Writing a function^[There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code in the paper wh'le wr't'ng the function. Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf] to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):
 
 ```{r}
 tidydatafunction <- function(data) {
@@ -113,12 +113,12 @@ head(turkey_time_series_tidy_confirmed_with_daily %>%
 Listing top 9 countries in terms of total cases (Will come in handy later)
 ```{r}
 top_nine_countries <- time_series_tidy_confirmed_with_daily %>%
-  filter(date == max(date)) %>%
-  group_by(country) %>%
-  summarise(total_case = sum(accumulated_cases, na.rm = TRUE)) %>%
-  top_n(9, total_case) %>%
-  arrange(desc(total_case)) %>%
-  select(country)
+  filter(date == max(date)) %>% # For the most recent day in data
+  group_by(country) %>% # Group by country
+  summarise(total_case = sum(accumulated_cases, na.rm = TRUE)) %>% # Summarise on accumulated cases
+  top_n(9, total_case) %>% # Select top 9 countries by total cases
+  arrange(desc(total_case)) %>% # Sort desc. to see in proper order
+  select(country) # Select only country names
 top_nine_countries
 ```
 

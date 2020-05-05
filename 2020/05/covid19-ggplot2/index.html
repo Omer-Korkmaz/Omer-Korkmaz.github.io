@@ -363,8 +363,8 @@ library(&quot;lubridate&quot;)</code></pre>
 ## #   X5.1.20 &lt;int&gt;, X5.2.20 &lt;int&gt;, X5.3.20 &lt;int&gt;, ...</code></pre>
 <p>Dataframe has 266 rows (One row for each country/state) and 106 columns (One column for each day, starting on January 22).</p>
 </div>
-<div id="cleaning-and-consolidating-data" class="section level1">
-<h1>2. Cleaning and Consolidating Data</h1>
+<div id="cleaning-data" class="section level1">
+<h1>2. Cleaning Data</h1>
 <p>Writing a function<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> to pivot the data into longer format and summarize by country (I might work on same data in the future or on deaths and recoveries, so, better to write a function):</p>
 <pre class="r"><code>tidydatafunction &lt;- function(data) {
   data %&lt;&gt;% select(everything(), -&#39;Province.State&#39;, -&#39;Lat&#39;, -&#39;Long&#39;) %&gt;% rename(country = Country.Region) # Removing unnecessary columns and renaming one
@@ -430,12 +430,12 @@ head(turkey_time_series_tidy_confirmed_with_daily %&gt;%
 ## 6  Turkey 2020-04-29            117589        2936</code></pre>
 <p>Listing top 9 countries in terms of total cases (Will come in handy later)</p>
 <pre class="r"><code>top_nine_countries &lt;- time_series_tidy_confirmed_with_daily %&gt;%
-  filter(date == max(date)) %&gt;%
-  group_by(country) %&gt;%
-  summarise(total_case = sum(accumulated_cases, na.rm = TRUE)) %&gt;%
-  top_n(9, total_case) %&gt;%
-  arrange(desc(total_case)) %&gt;%
-  select(country)
+  filter(date == max(date)) %&gt;% # For the most recent day in data
+  group_by(country) %&gt;% # Group by country
+  summarise(total_case = sum(accumulated_cases, na.rm = TRUE)) %&gt;% # Summarise on accumulated cases
+  top_n(9, total_case) %&gt;% # Select top 9 countries by total cases
+  arrange(desc(total_case)) %&gt;% # Sort desc. to see in proper order
+  select(country) # Select only country names
 top_nine_countries</code></pre>
 <pre><code>## # A tibble: 9 x 1
 ##   country       
@@ -485,7 +485,7 @@ ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector
 <li id="fn1"><p>If you want to learn more about the theory behind the ggplot2 and layered grammar of graphics, I’d recommend reading “The Layered Grammar of Graphics”, <a href="http://vita.had.co.nz/papers/layered-grammar.pdf" class="uri">http://vita.had.co.nz/papers/layered-grammar.pdf</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
 <li id="fn2"><p><a href="https://github.com/CSSEGISandData/COVID-19" class="uri">https://github.com/CSSEGISandData/COVID-19</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
 <li id="fn3"><p>Tidyverse is a set of R packages for data science. It includes ggplot2 as well as other packages to use in everyday data analyses, such as dplyr, tidyr, tibble and many others. Url: <a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code in the paper. Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: <a href="http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf" class="uri">http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf</a><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>There is a more complete and comprehensive paper written by Zhao Yancheng, inspired by / used some of the code in the paper wh’le wr’t’ng the function. Yanchang Zhao, COVID-19 Data Analysis with R – Worldwide. RDataMining.com, 2020. URL: <a href="http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf" class="uri">http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf</a><a href="#fnref4" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
@@ -527,7 +527,7 @@ ggplot(data = filter(time_series_tidy_confirmed_with_daily, country == as_vector
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://auditanddata.com/2015/07/hello-r-markdown/" data-tooltip="Hello R Markdown">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://auditanddata.com/2013/10/chinese-test/" data-tooltip="中文測試">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -620,7 +620,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://auditanddata.com/2015/07/hello-r-markdown/" data-tooltip="Hello R Markdown">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://auditanddata.com/2013/10/chinese-test/" data-tooltip="中文測試">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
