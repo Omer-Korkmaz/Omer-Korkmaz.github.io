@@ -301,7 +301,7 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable.</p>
-<p>Decision trees are popular, since they are easy to understand and can be visualized. You can used them with both numerical and categorical data. On the other hand, it is quite possible to create useless trees. You can easily over-train them by creating too complicated trees. Moreover, it is possible to create trees that are biased if your dataset is unbalanced.</p>
+<p>Decision trees are popular, since they are easy to understand and can be visualized. You can use them with both numerical and categorical data. On the other hand, it is quite possible to create useless trees. You can easily over-train them by creating too complicated trees. Moreover, it is possible to create trees that are biased if your dataset is unbalanced.</p>
 <p>Python’s Scikit-learn library <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. enables us to use state-of-the-art machine learning algorithms, including decision trees, with ease of use.</p>
 <p>Following is a sample implementation of a decision tree, using a toy dataset <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> (i.e. fictional and constructed conveniently for analysis). Dataset is about patients, all of them suffered from the same illness. There are multiple drug choices. Model is trying to predict which drug should be used with a future patient.</p>
 <div id="loading-libraries-and-checking-data" class="section level1">
@@ -323,7 +323,7 @@ from sklearn.tree import export_graphviz
 import graphviz
 import itertools</code></pre>
 <pre class="python"><code>drug_data = pd.read_csv(&quot;https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/ML0101ENv3/labs/drug200.csv&quot;, delimiter=&quot;,&quot;)</code></pre>
-<p>Data was imported, so let’s check out the data:</p>
+<p>Data is imported, so let’s check out the data:</p>
 <pre class="python"><code>drug_data.head</code></pre>
 <pre><code>## &lt;bound method NDFrame.head of      Age Sex      BP Cholesterol  Na_to_K   Drug
 ## 0     23   F    HIGH        HIGH   25.355  drugY
@@ -419,6 +419,17 @@ predTree</code></pre>
 ##        &#39;drugC&#39;, &#39;drugY&#39;, &#39;drugA&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
 ##        &#39;drugY&#39;, &#39;drugB&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
 ##        &#39;drugA&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;], dtype=object)</code></pre>
+<p>Checking Testset to Visually Compare Predictions</p>
+<pre class="python"><code>np.asarray(y_testset)</code></pre>
+<pre><code>## array([&#39;drugY&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugC&#39;, &#39;drugY&#39;,
+##        &#39;drugA&#39;, &#39;drugB&#39;, &#39;drugA&#39;, &#39;drugY&#39;, &#39;drugA&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugB&#39;, &#39;drugX&#39;, &#39;drugX&#39;,
+##        &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugB&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugA&#39;, &#39;drugX&#39;, &#39;drugB&#39;, &#39;drugC&#39;, &#39;drugC&#39;, &#39;drugX&#39;, &#39;drugX&#39;,
+##        &#39;drugC&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugA&#39;, &#39;drugY&#39;,
+##        &#39;drugC&#39;, &#39;drugY&#39;, &#39;drugA&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugX&#39;, &#39;drugB&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugA&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;], dtype=object)</code></pre>
 <p>#Evaluation</p>
 <pre class="python"><code>print(&quot;DecisionTrees&#39;s Accuracy: &quot;, metrics.accuracy_score(y_testset, predTree))</code></pre>
 <pre><code>## DecisionTrees&#39;s Accuracy:  0.9833333333333333</code></pre>
@@ -432,7 +443,7 @@ predTree</code></pre>
                     special_characters=True)  
 graph = graphviz.Source(dot_data)  
 graph</code></pre>
-<pre><code>## &lt;graphviz.files.Source object at 0x000000002E889348&gt;</code></pre>
+<pre><code>## &lt;graphviz.files.Source object at 0x0000000032CCBC88&gt;</code></pre>
 <p><img src="https://github.com/Omer-Korkmaz/Omer-Korkmaz.github.io/raw/master/2020/05/machine-learning-with-python-part-1-decision-trees/drugtree.png" /></p>
 </div>
 <div class="footnotes">

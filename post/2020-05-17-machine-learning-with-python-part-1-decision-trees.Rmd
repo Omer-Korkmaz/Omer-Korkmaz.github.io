@@ -27,7 +27,7 @@ Decision trees are supervised machine learning algorithms that are used for clas
 
 Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable. 
 
-Decision trees are popular, since they are easy to understand and can be visualized. You can used them with both numerical and categorical data. On the other hand, it is quite possible to create useless trees. You can easily over-train them by creating too complicated trees. Moreover, it is possible to create trees that are biased if your dataset is unbalanced.
+Decision trees are popular, since they are easy to understand and can be visualized. You can use them with both numerical and categorical data. On the other hand, it is quite possible to create useless trees. You can easily over-train them by creating too complicated trees. Moreover, it is possible to create trees that are biased if your dataset is unbalanced.
 
 Python’s Scikit-learn library ^[ Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011. URL: http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html]. enables us to use state-of-the-art machine learning algorithms, including decision trees, with ease of use.
 
@@ -57,7 +57,7 @@ import itertools
 drug_data = pd.read_csv("https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/ML0101ENv3/labs/drug200.csv", delimiter=",")
 ```
 
-Data was imported, so let's check out the data:
+Data is imported, so let's check out the data:
 
 ```{python}
 drug_data.head
@@ -125,6 +125,11 @@ drugTree.fit(X_trainset,y_trainset)
 ```{python}
 predTree = drugTree.predict(X_testset)
 predTree
+```
+
+Checking Testset to Visually Compare Predictions
+```{python}
+np.asarray(y_testset)
 ```
 
 #Evaluation
