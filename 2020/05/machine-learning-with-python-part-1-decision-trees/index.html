@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.69.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Dilara &amp; Omer Korkmaz">
+<meta name="keywords" content="python, machine learning, decision trees, scikit-learn, datascience, Data Science, Analytics">
+<meta name="description" content="
+
+
+Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable.
+">
+
+
+<meta property="og:description" content="
+
+
+Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable.
+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning with Python Part 1: Decision Trees">
+<meta name="twitter:title" content="Machine Learning with Python Part 1: Decision Trees">
+<meta property="og:url" content="/2020/05/machine-learning-with-python-part-1-decision-trees/">
+<meta property="twitter:url" content="/2020/05/machine-learning-with-python-part-1-decision-trees/">
+<meta property="og:site_name" content="Audit, Data Analytics and Other Stuff">
+<meta property="og:description" content="
+
+
+Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable.
+">
+<meta name="twitter:description" content="
+
+
+Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable.
+">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-17T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-05-17T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="python">
+    
+  
+  
+    
+      <meta property="article:tag" content="datascience">
+    
+      <meta property="article:tag" content="python">
+    
+      <meta property="article:tag" content="scikit-learn">
+    
+      <meta property="article:tag" content="machine learning">
+    
+      <meta property="article:tag" content="decision trees">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg">
+  <meta property="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg">
+
+
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg">
+  <meta property="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg">
+
+
+
+
+  <meta property="og:image" content="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png">
+  <meta property="twitter:image" content="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png">
+
+
+    <title>Machine Learning with Python Part 1: Decision Trees</title>
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="/2020/05/machine-learning-with-python-part-1-decision-trees/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-td0yjfxcnlrcjcafqezxoxslfunqeqqltqunutca6zzpnkykqt6nsgsefg6x.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-164474699-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Audit, Data Analytics and Other Stuff</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Dilara &amp; Omer Korkmaz</h4>
+        
+          <h5 class="sidebar-profile-bio">We both are working in audit and love data science. This is a modest attemp to motivate ourselves and share some of the cool stuff :)</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="https://cse.google.com/cse?cx=001676534707706536365:gxr04taqjf6">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">Search</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/dilara-korkmaz/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">DK LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/okorkmaz/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">OK LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Omer-Korkmaz">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              "
+       style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Machine Learning with Python Part 1: Decision Trees
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-17T00:00:00Z">
+        
+  May 17, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/python">python</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable.</p>
+<p>Decision trees are popular, since they are easy to understand and can be visualized. You can used them with both numerical and categorical data. On the other hand, it is quite possible to create useless trees. You can easily over-train them by creating too complicated trees. Moreover, it is possible to create trees that are biased if your dataset is unbalanced.</p>
+<p>Python’s Scikit-learn library <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. enables us to use state-of-the-art machine learning algorithms, including decision trees, with ease of use.</p>
+<p>Following is a sample implementation of a decision tree, using a toy dataset <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> (i.e. fictional and constructed conveniently for analysis). Dataset is about patients, all of them suffered from the same illness. There are multiple drug choices. Model is trying to predict which drug should be used with a future patient.</p>
+<div id="loading-libraries-and-checking-data" class="section level1">
+<h1>Loading Libraries and Checking Data</h1>
+<p>Loading necessary libraries:</p>
+<pre class="python"><code>import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import preprocessing
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from sklearn.externals.six import StringIO
+## C:\Users\korkm\Anaconda3\lib\site-packages\sklearn\externals\six.py:31: FutureWarning: The module is deprecated in version 0.21 and will be removed in version 0.23 since we&#39;ve dropped support for Python 2.7. Please rely on the official version of six (https://pypi.org/project/six/).
+##   &quot;(https://pypi.org/project/six/).&quot;, FutureWarning)
+import pydotplus
+from sklearn import tree
+from sklearn.tree import export_graphviz
+import graphviz
+import itertools</code></pre>
+<pre class="python"><code>drug_data = pd.read_csv(&quot;https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/ML0101ENv3/labs/drug200.csv&quot;, delimiter=&quot;,&quot;)</code></pre>
+<p>Data was imported, so let’s check out the data:</p>
+<pre class="python"><code>drug_data.head</code></pre>
+<pre><code>## &lt;bound method NDFrame.head of      Age Sex      BP Cholesterol  Na_to_K   Drug
+## 0     23   F    HIGH        HIGH   25.355  drugY
+## 1     47   M     LOW        HIGH   13.093  drugC
+## 2     47   M     LOW        HIGH   10.114  drugC
+## 3     28   F  NORMAL        HIGH    7.798  drugX
+## 4     61   F     LOW        HIGH   18.043  drugY
+## ..   ...  ..     ...         ...      ...    ...
+## 195   56   F     LOW        HIGH   11.567  drugC
+## 196   16   M     LOW        HIGH   12.006  drugC
+## 197   52   M  NORMAL        HIGH    9.894  drugX
+## 198   23   M  NORMAL      NORMAL   14.020  drugX
+## 199   40   F     LOW      NORMAL   11.349  drugX
+## 
+## [200 rows x 6 columns]&gt;</code></pre>
+</div>
+<div id="data-preparation" class="section level1">
+<h1>Data preparation</h1>
+<p>Defining X as the feature matrix (data of drug_data) and checking out the array:</p>
+<pre class="python"><code>X = drug_data[[&#39;Age&#39;, &#39;Sex&#39;, &#39;BP&#39;, &#39;Cholesterol&#39;, &#39;Na_to_K&#39;]].values
+X[0:10]</code></pre>
+<pre><code>## array([[23, &#39;F&#39;, &#39;HIGH&#39;, &#39;HIGH&#39;, 25.355],
+##        [47, &#39;M&#39;, &#39;LOW&#39;, &#39;HIGH&#39;, 13.093],
+##        [47, &#39;M&#39;, &#39;LOW&#39;, &#39;HIGH&#39;, 10.113999999999999],
+##        [28, &#39;F&#39;, &#39;NORMAL&#39;, &#39;HIGH&#39;, 7.797999999999999],
+##        [61, &#39;F&#39;, &#39;LOW&#39;, &#39;HIGH&#39;, 18.043],
+##        [22, &#39;F&#39;, &#39;NORMAL&#39;, &#39;HIGH&#39;, 8.607000000000001],
+##        [49, &#39;F&#39;, &#39;NORMAL&#39;, &#39;HIGH&#39;, 16.275],
+##        [41, &#39;M&#39;, &#39;LOW&#39;, &#39;HIGH&#39;, 11.037],
+##        [60, &#39;M&#39;, &#39;NORMAL&#39;, &#39;HIGH&#39;, 15.171],
+##        [43, &#39;M&#39;, &#39;LOW&#39;, &#39;NORMAL&#39;, 19.368]], dtype=object)</code></pre>
+<p>Converting categorical variables into indicator variables:</p>
+<pre class="python"><code>le_sex = preprocessing.LabelEncoder()
+le_sex.fit([&#39;F&#39;,&#39;M&#39;])
+## LabelEncoder()
+X[:,1] = le_sex.transform(X[:,1]) 
+
+
+le_BP = preprocessing.LabelEncoder()
+le_BP.fit([ &#39;LOW&#39;, &#39;NORMAL&#39;, &#39;HIGH&#39;])
+## LabelEncoder()
+X[:,2] = le_BP.transform(X[:,2])
+
+
+le_Chol = preprocessing.LabelEncoder()
+le_Chol.fit([ &#39;NORMAL&#39;, &#39;HIGH&#39;])
+## LabelEncoder()
+X[:,3] = le_Chol.transform(X[:,3]) 
+
+X[0:5]
+## array([[23, 0, 0, 0, 25.355],
+##        [47, 1, 1, 0, 13.093],
+##        [47, 1, 1, 0, 10.113999999999999],
+##        [28, 0, 2, 0, 7.797999999999999],
+##        [61, 0, 1, 0, 18.043]], dtype=object)</code></pre>
+<p>Filling the target variable:</p>
+<pre class="python"><code>y = drug_data[&quot;Drug&quot;]
+y[0:5]</code></pre>
+<pre><code>## 0    drugY
+## 1    drugC
+## 2    drugC
+## 3    drugX
+## 4    drugY
+## Name: Drug, dtype: object</code></pre>
+</div>
+<div id="setting-up-the-model" class="section level1">
+<h1>Setting Up the Model</h1>
+<p>Setting up the decision tree, splitting data into training (%70) and test sets (%30):</p>
+<pre class="python"><code>X_trainset, X_testset, y_trainset, y_testset = train_test_split(X, y, test_size=0.3, random_state=3)</code></pre>
+<p>Checking the dimensions of the sets:</p>
+<pre class="python"><code>print (&#39;Train set:&#39;, X_trainset.shape,  y_trainset.shape)</code></pre>
+<pre><code>## Train set: (140, 5) (140,)</code></pre>
+<pre class="python"><code>print (&#39;Test set:&#39;, X_testset.shape,  y_testset.shape)</code></pre>
+<pre><code>## Test set: (60, 5) (60,)</code></pre>
+<p>Training the model</p>
+<pre class="python"><code>drugTree = DecisionTreeClassifier(criterion=&quot;entropy&quot;, max_depth = 4)
+drugTree.fit(X_trainset,y_trainset)</code></pre>
+<pre><code>## DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion=&#39;entropy&#39;,
+##                        max_depth=4, max_features=None, max_leaf_nodes=None,
+##                        min_impurity_decrease=0.0, min_impurity_split=None,
+##                        min_samples_leaf=1, min_samples_split=2,
+##                        min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;,
+##                        random_state=None, splitter=&#39;best&#39;)</code></pre>
+<p>#Prediction</p>
+<pre class="python"><code>predTree = drugTree.predict(X_testset)
+predTree</code></pre>
+<pre><code>## array([&#39;drugY&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugC&#39;, &#39;drugY&#39;,
+##        &#39;drugA&#39;, &#39;drugB&#39;, &#39;drugA&#39;, &#39;drugY&#39;, &#39;drugA&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugB&#39;, &#39;drugX&#39;, &#39;drugX&#39;,
+##        &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugB&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugA&#39;, &#39;drugX&#39;, &#39;drugB&#39;, &#39;drugC&#39;, &#39;drugC&#39;, &#39;drugX&#39;, &#39;drugX&#39;,
+##        &#39;drugC&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugX&#39;, &#39;drugA&#39;, &#39;drugY&#39;,
+##        &#39;drugC&#39;, &#39;drugY&#39;, &#39;drugA&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugY&#39;, &#39;drugB&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugY&#39;,
+##        &#39;drugA&#39;, &#39;drugX&#39;, &#39;drugY&#39;, &#39;drugX&#39;], dtype=object)</code></pre>
+<p>#Evaluation</p>
+<pre class="python"><code>print(&quot;DecisionTrees&#39;s Accuracy: &quot;, metrics.accuracy_score(y_testset, predTree))</code></pre>
+<pre><code>## DecisionTrees&#39;s Accuracy:  0.9833333333333333</code></pre>
+</div>
+<div id="visualization" class="section level1">
+<h1>Visualization</h1>
+<pre class="python"><code>dot_data = tree.export_graphviz(drugTree, out_file=None, 
+                    feature_names=drug_data.columns[0:5],  
+                    class_names=np.unique(y_trainset),  
+                    filled=True, rounded=True,  
+                    special_characters=True)  
+graph = graphviz.Source(dot_data)  
+graph</code></pre>
+<pre><code>## &lt;graphviz.files.Source object at 0x000000002F072EC8&gt;</code></pre>
+<p><img src="drugtree.png" /></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p> Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011. URL: <a href="http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html" class="uri">http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>This implementation is from a notebook used in one of IBM’s courses about machine learning (<a href="https://www.coursera.org/learn/machine-learning-with-python/" class="uri">https://www.coursera.org/learn/machine-learning-with-python/</a>) and is released under the terms of the MIT License.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/datascience/">datascience</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/python/">python</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/scikit-learn/">scikit-learn</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/machine-learning/">machine learning</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/decision-trees/">decision trees</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2020/05/covid19-ggplot2/" data-tooltip="Simple Visualizations About Covid19 Cases Using ggplot2">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/shareArticle?url=/2020/05/machine-learning-with-python-part-1-decision-trees/">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?url=/2020/05/machine-learning-with-python-part-1-decision-trees/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://auditanddata.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Dilara &amp; Omer Korkmaz. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2020/05/covid19-ggplot2/" data-tooltip="Simple Visualizations About Covid19 Cases Using ggplot2">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/shareArticle?url=/2020/05/machine-learning-with-python-part-1-decision-trees/">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?url=/2020/05/machine-learning-with-python-part-1-decision-trees/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/shareArticle?url=%2F2020%2F05%2Fmachine-learning-with-python-part-1-decision-trees%2F">
+          <i class="fa fa-linkedin"></i><span>Share on LinkedIn</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?url=%2F2020%2F05%2Fmachine-learning-with-python-part-1-decision-trees%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://cdn2.iconfinder.com/data/icons/keyboard_keys/128/k.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Dilara &amp; Omer Korkmaz</h4>
+    
+      <div id="about-card-bio">We both are working in audit and love data science. This is a modest attemp to motivate ourselves and share some of the cool stuff :)</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Audit
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Istanbul, Turkey
+      </div>
+    
+  </div>
+</div>
+
+    
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-hugindjly9fo6h9vctdnsnklljlinjvyciv99r58sarj3owaer48ygyrtecy.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2020\/05\/machine-learning-with-python-part-1-decision-trees\/';
+          
+            this.page.identifier = '\/2020\/05\/machine-learning-with-python-part-1-decision-trees\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'auditanddata';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

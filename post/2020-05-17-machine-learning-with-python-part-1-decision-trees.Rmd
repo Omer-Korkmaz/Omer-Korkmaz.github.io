@@ -1,0 +1,146 @@
+---
+title: 'Machine Learning with Python Part 1: Decision Trees'
+author: Omer Korkmaz
+date: '2020-05-17'
+slug: machine-learning-with-python-part-1-decision-trees
+categories:
+  - python
+tags:
+  - datascience
+  - python
+  - scikit-learn
+  - machine learning
+  - decision trees
+keywords:
+  - python
+  - machine learning
+  - decision trees
+  - scikit-learn
+  - datascience
+coverImage: https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg
+thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg
+thumbnailImagePosition: left
+---
+Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable. 
+
+<!--more-->
+
+Decision trees are supervised machine learning algorithms that are used for classification and regression. You can train a model that learns from existing data and predicts the value of desired variable. 
+
+Decision trees are popular, since they are easy to understand and can be visualized. You can used them with both numerical and categorical data. On the other hand, it is quite possible to create useless trees. You can easily over-train them by creating too complicated trees. Moreover, it is possible to create trees that are biased if your dataset is unbalanced.
+
+Python’s Scikit-learn library ^[ Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011. URL: http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html]. enables us to use state-of-the-art machine learning algorithms, including decision trees, with ease of use.
+
+Following is a sample implementation of a decision tree, using a toy dataset ^[This implementation is from a notebook used in one of IBM’s courses about machine learning (https://www.coursera.org/learn/machine-learning-with-python/) and is released under the terms of the MIT License.] (i.e. fictional and constructed conveniently for analysis). Dataset is about patients, all of them suffered from the same illness. There are multiple drug choices. Model is trying to predict which drug should be used with a future patient.
+
+# Loading Libraries and Checking Data
+
+Loading necessary libraries:
+
+```{python warning=FALSE, error=FALSE, collapse=TRUE}
+import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import preprocessing
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from sklearn.externals.six import StringIO
+import pydotplus
+from sklearn import tree
+from sklearn.tree import export_graphviz
+import graphviz
+import itertools
+```
+
+```{python}
+drug_data = pd.read_csv("https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/ML0101ENv3/labs/drug200.csv", delimiter=",")
+```
+
+Data was imported, so let's check out the data:
+
+```{python}
+drug_data.head
+```
+
+# Data preparation
+
+Defining X as the feature matrix (data of drug_data) and checking out the array:
+
+```{python}
+X = drug_data[['Age', 'Sex', 'BP', 'Cholesterol', 'Na_to_K']].values
+X[0:10]
+```
+
+Converting categorical variables into indicator variables:
+
+```{python collapse=TRUE}
+le_sex = preprocessing.LabelEncoder()
+le_sex.fit(['F','M'])
+X[:,1] = le_sex.transform(X[:,1]) 
+
+
+le_BP = preprocessing.LabelEncoder()
+le_BP.fit([ 'LOW', 'NORMAL', 'HIGH'])
+X[:,2] = le_BP.transform(X[:,2])
+
+
+le_Chol = preprocessing.LabelEncoder()
+le_Chol.fit([ 'NORMAL', 'HIGH'])
+X[:,3] = le_Chol.transform(X[:,3]) 
+
+X[0:5]
+```
+
+Filling the target variable:
+
+```{python}
+y = drug_data["Drug"]
+y[0:5]
+```
+
+# Setting Up the Model
+
+Setting up the decision tree, splitting data into training (%70) and test sets (%30):
+
+```{python}
+X_trainset, X_testset, y_trainset, y_testset = train_test_split(X, y, test_size=0.3, random_state=3)
+```
+
+Checking the dimensions of the sets:
+
+```{python}
+print ('Train set:', X_trainset.shape,  y_trainset.shape)
+print ('Test set:', X_testset.shape,  y_testset.shape)
+```
+
+Training the model
+
+```{python}
+drugTree = DecisionTreeClassifier(criterion="entropy", max_depth = 4)
+drugTree.fit(X_trainset,y_trainset)
+```
+
+#Prediction
+```{python}
+predTree = drugTree.predict(X_testset)
+predTree
+```
+
+#Evaluation
+```{python}
+print("DecisionTrees's Accuracy: ", metrics.accuracy_score(y_testset, predTree))
+```
+
+# Visualization
+
+```{python}
+dot_data = tree.export_graphviz(drugTree, out_file=None, 
+                    feature_names=drug_data.columns[0:5],  
+                    class_names=np.unique(y_trainset),  
+                    filled=True, rounded=True,  
+                    special_characters=True)  
+graph = graphviz.Source(dot_data)  
+graph
+```
+![](drugtree.png)

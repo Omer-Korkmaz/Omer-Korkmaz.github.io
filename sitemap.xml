@@ -3,77 +3,107 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://auditanddata.com/</loc>
+    <loc>/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/datascience/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/decision-trees/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/machine-learning/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/05/machine-learning-with-python-part-1-decision-trees/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/python/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/scikit-learn/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/covid19/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/categories/</loc>
+    <loc>/tags/ggplot2/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/tags/covid19/</loc>
+    <loc>/tags/markdown/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/tags/datascience/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/tags/ggplot2/</loc>
+    <loc>/categories/r/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/tags/markdown/</loc>
+    <loc>/tags/r-markdown/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/post/</loc>
+    <loc>/tags/r-studio/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/tags/r/</loc>
+    <loc>/2020/05/covid19-ggplot2/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/categories/r/</loc>
+    <loc>/tags/tidyverse/</loc>
     <lastmod>2020-05-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://auditanddata.com/tags/r-markdown/</loc>
-    <lastmod>2020-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://auditanddata.com/tags/r-studio/</loc>
-    <lastmod>2020-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://auditanddata.com/2020/05/covid19-ggplot2/</loc>
-    <lastmod>2020-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://auditanddata.com/tags/</loc>
-    <lastmod>2020-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://auditanddata.com/tags/tidyverse/</loc>
-    <lastmod>2020-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://auditanddata.com/archives/</loc>
+    <loc>/archives/</loc>
   </url>
   
 </urlset>
