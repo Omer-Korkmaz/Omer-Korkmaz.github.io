@@ -143,4 +143,4 @@ dot_data = tree.export_graphviz(drugTree, out_file=None,
 graph = graphviz.Source(dot_data)  
 graph
 ```
-![](drugtree.png)
+![](https://auditanddata.com/2020/05/machine-learning-with-python-part-1-decision-trees/drugtree.png)
